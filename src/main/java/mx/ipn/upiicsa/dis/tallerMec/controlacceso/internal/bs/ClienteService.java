@@ -6,12 +6,13 @@ import mx.ipn.upiicsa.dis.tallerMec.controlacceso.internal.input.ClienteInputPor
 import mx.ipn.upiicsa.dis.tallerMec.controlacceso.internal.output.ClienteOutputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.UUID; // Útil si quieres generar IDs automáticos aquí
+import java.util.UUID;
+
 
 @Service
 public class ClienteService implements ClienteInputPort {
-
     @Autowired
     private ClienteOutputPort outputPort;
 
