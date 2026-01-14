@@ -1,13 +1,14 @@
 package mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.model;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
 
+@Entity
 @Data
+@Table(name = "clientes")
 @NoArgsConstructor
 @AllArgsConstructor
-@Table
+
 public class Cliente {
     @Id
     @Column(name ="id_clente")
@@ -21,6 +22,6 @@ public class Cliente {
     @Column(name = "correo")
     private String correo;
 
-    @OneToMany(mappedBy = "cliente", fecth =FetchType.LAZY)
+    @OneToMany(mappedBy = "cliente", fecth = FetchType.LAZY)
     private List<Vehiculo>vehiculos;
 }
