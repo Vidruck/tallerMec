@@ -1,9 +1,9 @@
-package AutoWizards.Dominio.Modelo;
+package controlacceso;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
@@ -14,33 +14,33 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Entity
-@Table(name = "reparaciones")
+@Table(name = "facturas")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reparacion {
+public class Factura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_reparacion")
-    private Long idReparacion;
+    @Column(name = "id_factura")
+    private Long idFactura;
 
-    @Column(nullable = false)
-    private String descripcion;
-
-    @Column(name = "doble_costo", nullable = false)
-    private Double dobleCosto;
+    @Column(name = "fecha_emision", nullable = false)
+    private LocalDateTime fechaEmision;
 
     @Column(name = "doble_subtotal", nullable = false)
     private Double dobleSubtotal;
 
-    @Column(name = "fecha_reparacion", nullable = false)
-    private LocalDateTime fechaReparacion;
+    @Column(name = "doble_iva", nullable = false)
+    private Double dobleIva;
 
-    @Column(name = "cubierto_garantia", nullable = false)
-    private boolean cubiertoGarantia;
+    @Column(name = "doble_total", nullable = false)
+    private Double dobleTotal;
 
-    @ManyToOne
-    @JoinColumn(name = "id_orden", nullable = false)
+    @Column(name = "estado_pago", nullable = false)
+    private String estadoPago;
+
+    @OneToOne
+    @JoinColumn(name = "id_orden", referencedColumnName = "id_orden")
     private OrdenServicio ordenServicio;
 }

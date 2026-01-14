@@ -1,4 +1,4 @@
-package AutoWizards.Dominio.Modelo;
+package controlacceso;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -6,32 +6,31 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 @Entity
-@Table(name = "notificaciones")
+@Table(name = "usuarios")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Notificacion {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_notificacion")
-    private Long idNotificacion;
+    @Column(name = "id_usuario")
+    private Long idUsuario;
 
     @Column(nullable = false)
-    private String tipo;
+    private String nombre;
+
+    @Column(unique = true, nullable = false)
+    private String email;
 
     @Column(nullable = false)
-    private String mensaje;
-
-    @Column(name = "fecha_envio", nullable = false)
-    private LocalDateTime fechaEnvio;
+    private String password;
 
     @Column(nullable = false)
-    private String estado;
+    private String rol;
 }
