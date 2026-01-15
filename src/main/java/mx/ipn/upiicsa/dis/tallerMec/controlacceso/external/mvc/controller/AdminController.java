@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @Autowired
-    private UsuarioService usuarioService; // Usamos la implementación para acceder a métodos extra o actualiza la interfaz
+    private UsuarioService usuarioService; 
 
     @Autowired
-    private UsuarioInputPort usuarioInputPort; // Para búsquedas generales
+    private UsuarioInputPort usuarioInputPort;
 
     @Autowired
-    private DepartamentoRepository deptoRepo; // Acceso directo para llenar combo (o crea un servicio para Deptos)
+    private DepartamentoRepository deptoRepo; 
 
     // Listar todos los usuarios para administrar
     @GetMapping("/usuarios")
     public String gestionarUsuarios(Model model) {
-        // Asumiendo que agregaste un método obtenerTodos() en el InputPort
-        // model.addAttribute("usuarios", usuarioInputPort.obtenerTodos());
+        
+      
         model.addAttribute("departamentos", deptoRepo.findAll());
         return "admin/gestion_usuarios";
     }
