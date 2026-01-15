@@ -18,7 +18,7 @@ public class DepartamentoController {
     public String listar(Model model) {
         model.addAttribute("departamentos", departamentoRepository.findAll());
         model.addAttribute("nuevoDepto", new Departamento()); // Para el formulario modal
-        return "admin/departamentos"; // Vista que crearemos abajo
+        return "admin/departamentos"; 
     }
 
     @PostMapping("/guardar")
