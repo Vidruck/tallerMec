@@ -11,13 +11,12 @@ import lombok.*;
 public class Departamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_departamento") // Asegúrate también de que coincida (schema.sql usa id_departamento)
+    @Column(name = "id_departamento")
     private Integer idDepartamento;
 
     @Column(name = "nombre")
     private String nombre;
 
-    // CORRECCIÓN AQUÍ: Agregamos la 's' faltante
     @Column(name = "descripcion")
     private String descripcion;
 }
