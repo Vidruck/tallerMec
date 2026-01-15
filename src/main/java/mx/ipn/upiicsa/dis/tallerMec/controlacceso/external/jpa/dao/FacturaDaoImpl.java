@@ -27,7 +27,7 @@ public class FacturaDaoImpl implements FacturacionOutputPort {
 
     @Override
     public List<Factura> findByRfc(String rfc) {
-        // Asegúrate de que tu FacturaRepository tenga el método: findByRfcCliente(String rfc)
+        
         return facturaRepository.findByRfcCliente(rfc);
     }
 
