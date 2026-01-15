@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 public class Vehiculo {
 
     @Id
-    @Column(name = "id_vehiculo") // <--- AQUÍ ESTABA EL ERROR (decía id_vehivulo)
+    @Column(name = "id_vehiculo") 
     private String idVehiculo;
 
     @Column(name = "marca")
