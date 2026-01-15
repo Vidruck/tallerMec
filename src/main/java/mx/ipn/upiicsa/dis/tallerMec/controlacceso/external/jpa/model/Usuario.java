@@ -1,9 +1,7 @@
 package mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "usuarios")
@@ -13,18 +11,22 @@ import lombok.AllArgsConstructor;
 public class Usuario {
 
     @Id
-    @Column(name = "id_usuario", length = 10)
+    @Column(name = "id_usuario")
     private String idUsuario;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(nullable = false, unique = true, length = 150)
+    @Column(name = "email")
     private String email;
 
-    @Column(nullable = false, length = 128)
+    @Column(name = "password")
     private String password;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "rol")
     private String rol; // "Asesor", "Mecanico", "Admin"
+    //Relacion opcional (un cliente no tiene un departamento pero un mecanico si)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_departamento")
+    private Departamento departamento;
 }
