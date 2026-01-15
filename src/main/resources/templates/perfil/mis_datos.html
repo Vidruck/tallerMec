@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Perfil | AutoWizards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar-custom mb-4">
+    <div class="nav-brand">
+        <a th:href="@{/dashboard}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Volver</a>
+    </div>
+    <div class="user-info">
+        <span class="badge badge-primary">Mi Cuenta</span>
+    </div>
+</nav>
+
+<div class="container d-flex justify-content-center">
+    <div class="card-custom" style="width: 100%; max-width: 600px;">
+
+        <div class="text-center mb-4">
+            <div style="width: 80px; height: 80px; background: var(--ctp-surface0); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                <i class="fa fa-user fa-3x" style="color: var(--accent-primary);"></i>
+            </div>
+            <h3 th:text="${usuario.nombre}">Nombre Usuario</h3>
+            <p style="color: var(--ctp-subtext0);" th:text="${usuario.email}">email@usuario.com</p>
+
+            <span class="badge badge-warning" th:text="${usuario.rol}">ROL</span>
+            <span th:if="${usuario.departamento}" class="badge badge-success" th:text="${usuario.departamento.nombre}">DEPTO</span>
+        </div>
+
+        <hr style="border-color: var(--ctp-surface0);">
+
+        <form th:action="@{/perfil/actualizar}" method="post">
+            <input type="hidden" name="idUsuario" th:value="${usuario.idUsuario}"/>
+
+            <div th:if="${param.actualizado}" class="alert alert-success">
+                <i class="fa fa-check"></i> Datos actualizados correctamente.
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nombre Completo</label>
+                <input type="text" name="nombre" class="form-control" th:value="${usuario.nombre}" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Nueva Contraseña</label>
+                <div class="input-group-custom">
+                    <div class="input-icon-box"><i class="fa fa-lock"></i></div>
+                    <div class="password-wrapper">
+                        <input type="password" name="password" class="form-control" placeholder="Dejar en blanco para no cambiar">
+                        <i class="fa fa-eye password-toggle"></i>
+                    </div>
+                </div>
+                <small style="color: var(--ctp-subtext0);">* Solo llénalo si deseas cambiar tu clave actual.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fa fa-save"></i> Guardar Cambios
+            </button>
+        </form>
+
+    </div>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

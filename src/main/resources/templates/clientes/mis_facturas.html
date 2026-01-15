@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Facturas | AutoWizards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar-custom mb-4">
+    <div class="nav-brand">
+        <a th:href="@{/dashboard}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Dashboard</a>
+    </div>
+    <div class="user-info">
+        <span class="badge badge-success">Zona Fiscal</span>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="mb-4">Mis Comprobantes Fiscales</h2>
+
+    <div class="card-custom">
+        <div class="table-responsive">
+            <table class="table-custom">
+                <thead>
+                <tr>
+                    <th>Folio Fiscal (UUID)</th>
+                    <th>Fecha Emisión</th>
+                    <th>Orden de Servicio</th>
+                    <th>Monto</th>
+                    <th>Descarga</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="font-family: monospace;">A1B2-C3D4-E5F6</td>
+                    <td>15/01/2026</td>
+                    <td>Orden #105 (Ford Mustang)</td>
+                    <td style="font-weight: bold; color: var(--accent-success);">$ 4,500.00</td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm">
+                            <i class="fa fa-file-pdf"></i> PDF
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-sm" style="border:1px solid var(--ctp-surface0); color: var(--ctp-text);">
+                            <i class="fa fa-file-code"></i> XML
+                        </a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

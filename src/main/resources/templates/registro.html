@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro | AutoWizards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<button id="theme-toggle" class="theme-toggle-fixed"><i class="fa fa-moon-o"></i></button>
+
+<div class="login-container">
+    <div class="card-custom login-card" style="max-width: 500px;">
+
+        <div class="text-center mb-4">
+            <h2 style="color: var(--accent-primary);">Crear Cuenta</h2>
+            <p style="color: var(--ctp-subtext0);">Únete a AutoWizards para gestionar tus servicios.</p>
+        </div>
+
+        <form th:action="@{/registro}" method="post"> <div class="mb-3">
+            <label class="form-label">Nombre Completo</label>
+            <div class="input-group-custom">
+                <div class="input-icon-box"><i class="fa fa-user"></i></div>
+                <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+            </div>
+        </div>
+
+            <div class="mb-3">
+                <label class="form-label">Correo Electrónico</label>
+                <div class="input-group-custom">
+                    <div class="input-icon-box"><i class="fa fa-envelope"></i></div>
+                    <input type="email" name="email" class="form-control" placeholder="ejemplo@email.com" required>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Contraseña</label>
+                <div class="input-group-custom">
+                    <div class="input-icon-box"><i class="fa fa-lock"></i></div>
+                    <div class="password-wrapper">
+                        <input type="password" name="password" class="form-control" placeholder="Mínimo 6 caracteres" required>
+                        <i class="fa fa-eye password-toggle"></i>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3">Registrarse</button>
+
+            <div class="text-center">
+                <span style="color: var(--ctp-subtext0);">¿Ya tienes cuenta? </span>
+                <a th:href="@{/login}">Inicia Sesión</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

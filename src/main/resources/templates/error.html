@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Error | AutoWizards</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; }
+    .error-code { font-size: 6rem; font-weight: 800; color: var(--accent-danger); line-height: 1; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <i class="fa fa-car-crash fa-5x mb-4" style="color: var(--ctp-subtext0);"></i>
+  <div class="error-code">Oops!</div>
+  <h2 class="mt-3 mb-4">Algo salió mal en el motor.</h2>
+  <p style="color: var(--ctp-subtext0); max-width: 500px; margin: 0 auto 2rem;">
+    No pudimos encontrar la página que buscas o ocurrió un error interno.
+    El equipo de mecánicos ya ha sido notificado.
+  </p>
+  <a th:href="@{/static}" class="btn-primary" style="display: inline-block; text-decoration: none;">Volver al Inicio</a>
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>

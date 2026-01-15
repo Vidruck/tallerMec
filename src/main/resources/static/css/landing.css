@@ -1,0 +1,71 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS: LANDING PAGE
+   ========================================= */
+
+/* Sección Hero (Portada) */
+.hero-section {
+    padding: 8rem 0 5rem;
+    text-align: center;
+    /* Usamos las variables de Catppuccin definidas en style.css */
+    background: linear-gradient(135deg, var(--ctp-mantle) 0%, var(--ctp-base) 100%);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--ctp-subtext0);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+/* Tarjetas de Características (Features) */
+.feature-card {
+    background-color: var(--ctp-mantle);
+    border: 1px solid var(--ctp-surface0);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    height: 100%;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    background: rgba(61, 174, 233, 0.1); /* Azul Breeze transparente */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajustes específicos para el Navbar en Landing (Transparencia) */
+.navbar-landing {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(24, 24, 37, 0.95); /* Opacidad sobre el fondo */
+    backdrop-filter: blur(10px);
+}
+
+/* En modo claro, ajustamos el fondo del navbar para que se vea bien */
+[data-theme="light"] .navbar-landing {
+    background: rgba(239, 241, 245, 0.95);
+}

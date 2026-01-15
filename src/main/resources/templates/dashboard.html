@@ -1,126 +1,126 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{fragments/main-layout}">
-
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <title>Panel de Control - AutoWizards</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AutoWizards</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"> <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
 <body>
 
-    <div layout:fragment="content">
-
-        <section class="layout_padding">
-            <div class="container">
-                <div class="heading_container heading_center mb-5">
-                    <h2>
-                        Panel de Gestión
-                    </h2>
-                </div>
-
-                <!-- Summary Cards -->
-                <div class="row mb-5">
-                    <div class="col-md-4">
-                        <div class="box text-center p-4" style="background-color: #f8f9fa; border-radius: 10px;">
-                            <div class="img-box mb-3">
-                                <i class="fa fa-wrench fa-3x" aria-hidden="true" style="color: #f48924;"></i>
-                            </div>
-                            <div class="detail-box">
-                                <h4>Órdenes Activas</h4>
-                                <h2 class="font-weight-bold">12</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center p-4" style="background-color: #f8f9fa; border-radius: 10px;">
-                            <div class="img-box mb-3">
-                                <i class="fa fa-calendar fa-3x" aria-hidden="true" style="color: #f48924;"></i>
-                            </div>
-                            <div class="detail-box">
-                                <h4>Citas de Hoy</h4>
-                                <h2 class="font-weight-bold">5</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box text-center p-4" style="background-color: #f8f9fa; border-radius: 10px;">
-                            <div class="img-box mb-3">
-                                <i class="fa fa-check-circle fa-3x" aria-hidden="true" style="color: #f48924;"></i>
-                            </div>
-                            <div class="detail-box">
-                                <h4>Completadas</h4>
-                                <h2 class="font-weight-bold">8</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Service Orders Table -->
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="mb-4">Órdenes de Servicio Recientes</h3>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th># Orden</th>
-                                        <th>Cliente</th>
-                                        <th>Vehículo</th>
-                                        <th>Servicio</th>
-                                        <th>Estado</th>
-                                        <th>Fecha Ingreso</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Placeholder rows - normally iterated with th:each -->
-                                    <tr>
-                                        <td>ORD-001</td>
-                                        <td>Juan Pérez</td>
-                                        <td>Toyota Corolla 2018</td>
-                                        <td>Cambio de Aceite</td>
-                                        <td><span class="badge badge-warning">En Proceso</span></td>
-                                        <td>2024-05-20</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ORD-002</td>
-                                        <td>Maria Lopez</td>
-                                        <td>Honda Civic 2020</td>
-                                        <td>Alineación</td>
-                                        <td><span class="badge badge-success">Listo</span></td>
-                                        <td>2024-05-19</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ORD-003</td>
-                                        <td>Carlos Ruiz</td>
-                                        <td>Ford Fiesta 2015</td>
-                                        <td>Revisión Frenos</td>
-                                        <td><span class="badge badge-danger">Pendiente</span></td>
-                                        <td>2024-05-21</td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
-                                            <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+<nav class="navbar-custom">
+    <div class="nav-brand">
+        <i class="fa fa-wrench"></i> AutoWizards
     </div>
 
-</body>
+    <div class="nav-user-menu">
+        <button id="theme-toggle" style="background:none; border:none; color:var(--ctp-text); cursor:pointer; font-size:1.2rem;">
+            <i class="fa fa-moon-o"></i>
+        </button>
 
+        <div class="user-info">
+            <div class="user-name" sec:authentication="name">Usuario</div>
+            <div class="user-role" sec:authentication="principal.authorities">Rol</div>
+        </div>
+
+        <a th:href="@{/perfil}" title="Mi Perfil" style="color: var(--ctp-text);">
+            <i class="fa fa-user-circle fa-lg"></i>
+        </a>
+
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit" class="btn-logout" title="Cerrar Sesión">
+                <i class="fa fa-sign-out"></i>
+            </button>
+        </form>
+    </div>
+</nav>
+
+<div class="dashboard-container">
+
+    <div class="mb-5">
+        <h1>Hola, <span sec:authentication="name" style="color: var(--accent-primary);">Usuario</span>.</h1>
+        <p style="color: var(--ctp-subtext0); font-size: 1.1rem;">Bienvenido al panel de control de AutoWizards.</p>
+    </div>
+
+    <div sec:authorize="hasRole('ADMIN')">
+        <h4 class="mb-3"><i class="fa fa-shield"></i> Administración</h4>
+        <div class="dashboard-grid">
+            <a th:href="@{/admin/usuarios}" class="action-card">
+                <i class="fa fa-users action-icon"></i>
+                <div class="action-title">Usuarios y Roles</div>
+                <div class="action-desc">Gestionar personal, asignar departamentos y permisos.</div>
+            </a>
+
+            <a th:href="@{/admin/reportes/dashboard}" class="action-card card-success">
+                <i class="fa fa-chart-line action-icon"></i>
+                <div class="action-title">Reportes Financieros</div>
+                <div class="action-desc">Ver ingresos mensuales y rendimiento del taller.</div>
+            </a>
+
+            <a href="#" class="action-card card-warning">
+                <i class="fa fa-building action-icon"></i>
+                <div class="action-title">Departamentos</div>
+                <div class="action-desc">Configurar áreas de trabajo (Pintura, Mecánica, etc.)</div>
+            </a>
+        </div>
+        <hr class="my-5" style="border-color: var(--ctp-surface0);">
+    </div>
+
+
+    <div sec:authorize="hasAnyRole('ADMIN', 'JEFE_AREA', 'TRABAJADOR')">
+        <h4 class="mb-3"><i class="fa fa-cogs"></i> Operaciones de Taller</h4>
+        <div class="dashboard-grid">
+
+            <a th:href="@{/clientes}" class="action-card">
+                <i class="fa fa-plus-circle action-icon"></i>
+                <div class="action-title">Recepción de Vehículo</div>
+                <div class="action-desc">Registrar cliente nuevo o abrir orden de servicio.</div>
+            </a>
+
+            <a th:href="@{/taller/ordenes}" class="action-card card-warning">
+                <i class="fa fa-clipboard-list action-icon"></i>
+                <div class="action-title">Tablero de Trabajo</div>
+                <div class="action-desc">Ver autos en reparación y actualizar estados.</div>
+            </a>
+
+            <a href="#" class="action-card card-danger">
+                <i class="fa fa-boxes action-icon"></i>
+                <div class="action-title">Inventario</div>
+                <div class="action-desc">Consultar stock de refacciones (Próximamente).</div>
+            </a>
+        </div>
+    </div>
+
+
+    <div sec:authorize="hasRole('CLIENTE')">
+        <h4 class="mb-3"><i class="fa fa-car"></i> Mi Garage</h4>
+        <div class="dashboard-grid">
+
+            <a href="#" class="action-card">
+                <i class="fa fa-car action-icon"></i>
+                <div class="action-title">Mis Vehículos</div>
+                <div class="action-desc">Ver historial de servicios y estatus actual.</div>
+            </a>
+
+            <a href="#" class="action-card card-success">
+                <i class="fa fa-file-invoice-dollar action-icon"></i>
+                <div class="action-title">Mis Facturas</div>
+                <div class="action-desc">Descargar comprobantes fiscales y garantías.</div>
+            </a>
+
+            <a href="#" class="action-card card-warning">
+                <i class="fa fa-calendar-check action-icon"></i>
+                <div class="action-title">Agendar Cita</div>
+                <div class="action-desc">Solicitar mantenimiento preventivo o reparación.</div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script th:src="@{/js/app.js}"></script>
+</body>
 </html>

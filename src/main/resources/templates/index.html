@@ -1,687 +1,84 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <link rel="icon" href="images/fevicon.png" type="image/gif" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoWizards | Taller Mecánico Experto</title>
 
-  <title>Manos al Motor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-  <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
-
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
-
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+  <link rel="stylesheet" th:href="@{/css/style.css}"> <link rel="stylesheet" th:href="@{/css/landing.css}">
 </head>
-
 <body>
 
-  <!-- header section strats -->
-  <header class="header_section">
-    <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
-          <span>Manos al Motor</span>
-        </a>
+<nav class="navbar-custom navbar-landing">
+  <div class="nav-brand">
+    <i class="fa fa-wrench"></i> AutoWizards
+  </div>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class=""> </span>
-        </button>
+  <div class="nav-user-menu">
+    <button id="theme-toggle" style="background:none; border:none; color:var(--ctp-text); cursor:pointer; font-size:1.2rem; margin-right: 1rem;">
+      <i class="fa fa-moon-o"></i>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav  ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Inicio<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html"> Conocenos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="service.html">Servicios</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="why.html">Ofrecemos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contactanos</a>
-            </li>
-          </ul>
-          <div class="quote_btn-container">
-            <form class="form-inline">
-              <button class="btn   nav_search-btn" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </form>
-            <a href="">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>
-               Llama +52 5575081329
-              </span>
-            </a>
-          </div>
-        </div>
-      </nav>
+    <a th:href="@{/registro}" class="btn" style="color: var(--ctp-text); font-weight: 600;">Registrarse</a>
+    <a th:href="@{/login}" class="btn btn-primary">
+      Iniciar Sesión <i class="fa fa-arrow-right ms-2"></i>
+    </a>
+  </div>
+</nav>
+
+<section class="hero-section">
+  <div class="container">
+    <span class="badge badge-primary mb-3" style="font-size: 0.9rem; padding: 0.5em 1em;">Ingeniería Automotriz Avanzada</span>
+    <h1 class="hero-title">Tu auto merece <br>manos expertas.</h1>
+    <p class="hero-subtitle">
+      Gestión integral de servicios mecánicos, historial digital y diagnósticos precisos.
+      Experimenta la nueva era del mantenimiento automotriz con AutoWizards.
+    </p>
+    <div class="d-flex justify-content-center gap-3">
+      <a th:href="@{/registro}" class="btn btn-primary btn-lg px-5">Agendar Cita</a>
+      <a href="#servicios" class="btn" style="border: 1px solid var(--ctp-surface0); color: var(--ctp-text); padding: 0.75rem 2rem;">Saber más</a>
     </div>
-  </header>
-  <!-- end header section -->
-  <!-- slider section -->
-  <section class="slider_section ">
-    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-6 col-lg-5">
-                <div class="detail-box">
-                  <h1>
-                    Reparación <br>
-                    y Mantenimiento de Autos
-                  </h1>
-                  <p>
-                    En Manos al Motor somos un taller mecánico comprometido con ofrecer un servicio honesto, rápido y de alta calidad. Contamos con un equipo de técnicos especializados que combinan experiencia, tecnología y dedicación para garantizar el mejor cuidado de tu vehículo.
-                    Creemos en la transparencia, el trato cercano y la confianza, por eso cada reparación es realizada con la misma atención y detalle como si el auto fuera nuestro.
-                    En Manos al Motor trabajamos para que tu vehículo siempre esté en las mejores manos.
-                  <div class="btn-box">
-                    <a href="" class="btn-1">
-                      Más información
-                    </a>
-                    <a href="" class="btn-2">
-                      Contactanos
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-7">
-                <div class="img-box">
-                  <img src="images/slider-img.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-6 col-lg-5">
-                <div class="detail-box">
-                  <h1>
-                    ¡Promoción <br>
-                    especial!
-                  </h1>
-                  <p>
-                    Cambio de aceite + revisión de frenos + diagnóstico computarizado por un precio único y preferencial. Además, si realizas cualquier reparación el mismo día, obtienes un 10% de descuento adicional en mano de obra. Oferta válida por tiempo limitado.
-                    <div class="btn-box">
-                    <a href="" class="btn-1">
-                      Read More
-                    </a>
-                    <a href="" class="btn-2">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-7">
-                <div class="img-box">
-                  <img src="images/slider-img.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-6 col-lg-5">
-                <div class="detail-box">
-                  <h1>
-                    Car Repair <br>
-                    And Maintenance
-                  </h1>
-                  <p>
-                    Anything embarrassing hidden in the middle of text. All the Lorem Ipsuanything embarrassing hidden in the middle of text. All the Lorem Ipsumm </p>
-                  <div class="btn-box">
-                    <a href="" class="btn-1">
-                      Read More
-                    </a>
-                    <a href="" class="btn-2">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-7">
-                <div class="img-box">
-                  <img src="images/slider-img.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
+  </div>
+</section>
+
+<section id="servicios" class="py-5">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa fa-clipboard-check"></i></div>
+          <h3>Diagnóstico Digital</h3>
+          <p style="color: var(--ctp-subtext0);">Recibe tu presupuesto y diagnóstico detallado directamente en tu perfil web, sin papeleo innecesario.</p>
         </div>
       </div>
-      <ol class="carousel-indicators">
-        <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-        <li data-target="#customCarousel1" data-slide-to="1"></li>
-        <li data-target="#customCarousel1" data-slide-to="2"></li>
-      </ol>
-    </div>
-  </section>
-  <!-- end slider section -->
-
-
-
-  <!-- service section -->
-  <section class="service_section ">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Nuestros Servicios
-        </h2>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--accent-success); background: rgba(64, 160, 43, 0.1);"><i class="fa fa-history"></i></div>
+          <h3>Historial Completo</h3>
+          <p style="color: var(--ctp-subtext0);">Cada reparación, refacción y mantenimiento queda registrado permanentemente en el expediente de tu vehículo.</p>
+        </div>
       </div>
-    </div>
-    <div class="container ">
-      <div class="row">
-        <div class="col-md-6 col-lg-4">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/s1.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Maintenimiento General
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/s2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Reparado y Reemplazo
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 ">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/s3.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Reparación y reemplazo de neumáticos
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Read More
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/s4.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Alineación de Ruedas
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/s5.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Reparación del sistema de combustible
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/s6.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Afinación del Motor
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon" style="color: var(--accent-warning); background: rgba(223, 142, 29, 0.1);"><i class="fa fa-shield-alt"></i></div>
+          <h3>Garantía Real</h3>
+          <p style="color: var(--ctp-subtext0);">Seguimiento post-servicio y gestión de garantías transparente. Tu tranquilidad es nuestra prioridad.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- end service section -->
+<footer class="text-center py-4" style="border-top: 1px solid var(--ctp-surface0); color: var(--ctp-subtext0); font-size: 0.9rem;">
+  <div class="container">
+    <p class="mb-0">&copy; 2026 AutoWizards. Todos los derechos reservados.</p>
+    <small>Desarrollado con Arquitectura Hexagonal.</small>
+  </div>
+</footer>
 
-  <!-- about section -->
-
-  <section class="about_section layout_padding">
-    <div class="container  ">
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.png" alt="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                Ofrecemos
-              </h2>
-            </div>
-            <p>
-              En Manos al Motor somos un taller mecánico comprometido con ofrecer un servicio honesto, rápido y de alta calidad. Contamos con un equipo de técnicos especializados que combinan experiencia, tecnología y dedicación para garantizar el mejor cuidado de tu vehículo.
-              Creemos en la transparencia, el trato cercano y la confianza, por eso cada reparación es realizada con la misma atención y detalle como si el auto fuera nuestro.
-              En Manos al Motor trabajamos para que tu vehículo siempre esté en las mejores manos.
-              <a href="">
-              Leer Más
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end about section -->
-
-
-  <!-- why section -->
-  <section class="why_section ">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          ¿Por qué elegirnos?
-        </h2>
-      </div>
-    </div>
-    <div class="container ">
-      <div class="row">
-        <div class="col-md-6 col-lg-4 mx-auto">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/w1.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Los mejores trabajadores
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mx-auto ">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/w2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Los mejores materiales
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mx-auto">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/w3.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-               El mejor servicio
-              </h4>
-              <p>
-                Generators on the Internet tend to repeat predefined chunks as necessary
-              </p>
-              <a href="">
-                Leer Más
-                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end why section -->
-
-  <!-- client section -->
-  <section class="client_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>
-          Calificaciones de los clientes
-        </h2>
-        <p>
-          Porque tu opinión nos importa y siempre la tenemos en cuenta. 
-        </p>
-      </div>
-    </div>
-    <div class="container px-0">
-      <div id="customCarousel2" class="carousel  slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-10 mx-auto">
-                  <div class="box">
-                    <div class="img-box">
-                      <img src="images/client.jpg" alt="">
-                    </div>
-                    <div class="detail-box">
-                      <div class="client_info">
-                        <div class="client_name">
-                          <h5>
-                            Carlos Vives
-                          </h5>
-                          <h6>
-                            Cliente
-                          </h6>
-                        </div>
-                        <i class="fa fa-quote-left" aria-hidden="true"></i>
-                      </div>
-                      <p>
-                        El servicio fue excelente de principio a fin. Me explicaron claramente el problema de mi vehículo y las opciones de reparación, sin presionarme ni intentar cobrar de más. El auto quedó en perfectas condiciones y lo entregaron antes del tiempo prometido. Muy profesionales y confiables.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="box">
-                    <div class="img-box">
-                      <img src="images/client.jpg" alt="">
-                    </div>
-                    <div class="detail-box">
-                      <div class="client_info">
-                        <div class="client_name">
-                          <h5>
-                           Mijares
-                          </h5>
-                          <h6>
-                            Cliente
-                          </h6>
-                        </div>
-                        <i class="fa fa-quote-left" aria-hidden="true"></i>
-                      </div>
-                      <p>
-                        Después de probar varios talleres, aquí encontré finalmente un servicio honesto y bien hecho. Me dieron un diagnóstico preciso, un presupuesto justo y cumplieron exactamente con lo acordado. Se nota que tienen experiencia y que les importa realmente el cliente. Sin duda regresaré
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-10 mx-auto">
-                  <div class="box">
-                    <div class="img-box">
-                      <img src="images/client.jpg" alt="">
-                    </div>
-                    <div class="detail-box">
-                      <div class="client_info">
-                        <div class="client_name">
-                          <h5>
-                            Dua Lipa
-                          </h5>
-                          <h6>
-                            Cliente
-                          </h6>
-                        </div>
-                        <i class="fa fa-quote-left" aria-hidden="true"></i>
-                      </div>
-                      <p>
-                        La atención fue muy completa. Revisaron mi coche a detalle, me mantuvieron informado durante todo el proceso y solucionaron el problema a la primera. Además, el trato del personal fue amable y transparente. Me dio mucha confianza dejar mi vehículo con ellos. Totalmente recomendado.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel_btn-box">
-          <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
-            <span class="sr-only">Anterior</span>
-          </a>
-          <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <span class="sr-only">Siguiente</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end client section -->
-
-
-  <!-- contact section -->
-  <section class="contact_section layout_padding-bottom">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form_container">
-            <div class="heading_container ">
-              <h2>
-                Registrate para contactarnos
-              </h2>
-            </div>
-            <form action="#">
-              <div>
-                <input type="text" placeholder="Tu nombre" />
-              </div>
-              <div>
-                <input type="email" placeholder="Tu email" />
-              </div>
-              <div>
-                <input type="text" placeholder="Tu telefono" />
-              </div>
-              <div>
-                <input type="text" class="message-box" placeholder="Comentario" />
-              </div>
-              <div class="btn_box ">
-                <button>
-                  ENVIAR
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="img-box">
-            <img src="images/contact-img.png" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end contact section -->
-
-
-  <!-- info section -->
-  <section class="info_section ">
-    <div class="info_container ">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <div class="info_contact ">
-              <div class="row">
-                <div class="col-md-3">
-                  <a href="#" class="link-box">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <span>
-                      Ubicacióm
-                    </span>
-                  </a>
-                </div>
-                <div class="col-md-5">
-                  <a href="#" class="link-box">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    <span>
-                      Llama +52 5575081329
-                    </span>
-                  </a>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="link-box">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <span>
-                      gabpine@gmail.com
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5  col-lg-3 mx-auto">
-            <div class="info_form ">
-              <form action="#">
-                <input type="email" placeholder="Enter Your Email" />
-                <button>
-                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="info_logo">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              Manos al Motor
-            </span>
-          </a>
-        </div>
-        <div class="social-box">
-          <a href="">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-          </a>
-          <a href="">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-          <a href="">
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-          </a>
-          <a href="">
-            <i class="fa fa-youtube" aria-hidden="true"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end info section -->
-
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> Todos los derechos reservados | Hecho por
-        <a href="https://html.design/"> Equipo ID </a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
-
-  <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
-  <!-- custom js -->
-  <script src="js/custom.js"></script>
-
-
+<script th:src="@{/js/app.js}"></script>
 </body>
-
 </html>

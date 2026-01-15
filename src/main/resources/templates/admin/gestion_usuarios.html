@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Usuarios | AutoWizards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<nav class="navbar-custom mb-4">
+    <div class="nav-brand">
+        <a th:href="@{/dashboard}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Dashboard</a>
+    </div>
+    <div class="user-info">
+        <span class="badge badge-primary"><i class="fa fa-shield"></i> Zona Admin</span>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="mb-4">
+        <h2><i class="fa fa-users-cog" style="color: var(--accent-primary);"></i> Control de Personal y Accesos</h2>
+        <p style="color: var(--ctp-subtext0);">Administra los roles y departamentos de los usuarios registrados.</p>
+    </div>
+
+    <div th:if="${param.exito}" class="alert alert-success">
+        <i class="fa fa-check-circle"></i> Permisos actualizados correctamente.
+    </div>
+
+    <div class="card-custom">
+        <div class="toolbar-container">
+            <div class="search-box">
+                <i class="fa fa-search search-icon"></i>
+                <input type="text" id="tableSearch" class="form-control search-input" placeholder="Buscar por nombre, email o rol...">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table-custom">
+                <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Rol Actual</th>
+                    <th>Departamento</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td>
+                        <div style="font-weight: 600; color: var(--ctp-text);" th:text="${usuario.nombre}">Nombre</div>
+                        <small th:text="${usuario.email}" style="color: var(--ctp-subtext0);">email@test.com</small>
+                    </td>
+                    <td>
+                                <span class="badge"
+                                      th:classappend="${usuario.rol == 'ADMIN' ? 'badge-primary' : (usuario.rol == 'CLIENTE' ? 'badge-success' : 'badge-warning')}"
+                                      th:text="${usuario.rol}">ROL</span>
+                    </td>
+                    <td>
+                        <span th:if="${usuario.departamento}" th:text="${usuario.departamento.nombre}">-</span>
+                        <span th:unless="${usuario.departamento}" style="color: var(--ctp-subtext0); font-style: italic;">Sin Depto.</span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm"
+                                data-bs-toggle="modal"
+                                th:data-bs-target="'#modalEditar' + ${usuario.idUsuario}">
+                            <i class="fa fa-edit"></i> Editar Rol
+                        </button>
+
+                        <div class="modal fade" th:id="'modalEditar' + ${usuario.idUsuario}" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="background-color: var(--ctp-mantle); color: var(--ctp-text);">
+                                    <div class="modal-header" style="border-bottom: 1px solid var(--ctp-surface0);">
+                                        <h5 class="modal-title">Editar Acceso</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+                                    </div>
+                                    <form th:action="@{/admin/promover}" method="post">
+                                        <div class="modal-body">
+                                            <input type="hidden" name="idUsuario" th:value="${usuario.idUsuario}"/>
+
+                                            <p>Usuario: <strong th:text="${usuario.nombre}"></strong></p>
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Rol Asignado</label>
+                                                <select name="nuevoRol" class="form-control">
+                                                    <option value="CLIENTE" th:selected="${usuario.rol == 'CLIENTE'}">CLIENTE (Solo ver sus autos)</option>
+                                                    <option value="TRABAJADOR" th:selected="${usuario.rol == 'TRABAJADOR'}">TRABAJADOR (Mecánico/Técnico)</option>
+                                                    <option value="JEFE_AREA" th:selected="${usuario.rol == 'JEFE_AREA'}">JEFE DE AREA (Gestión)</option>
+                                                    <option value="ADMIN" th:selected="${usuario.rol == 'ADMIN'}">ADMINISTRADOR (Total)</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Departamento (Solo para Personal)</label>
+                                                <select name="idDepartamento" class="form-control">
+                                                    <option value="">-- Ninguno --</option>
+                                                    <option th:each="depto : ${departamentos}"
+                                                            th:value="${depto.idDepartamento}"
+                                                            th:text="${depto.nombre}"
+                                                            th:selected="${usuario.departamento != null and usuario.departamento.idDepartamento == depto.idDepartamento}">
+                                                    </option>
+                                                </select>
+                                                <small style="color: var(--accent-warning);">* Requerido si es Trabajador o Jefe.</small>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="border-top: 1px solid var(--ctp-surface0);">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/bootstrap.js}"></script> <script th:src="@{/js/app.js}"></script>
+</body>
+</html>
