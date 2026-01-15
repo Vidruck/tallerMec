@@ -6,6 +6,9 @@ import org.springframework.security.core.Authentication; // Importante
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.repository.ClienteRepository;
+import mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.repository.FacturaRepository;
+import java.util.List;
 
 @Controller
 @RequestMapping("/facturas")
@@ -14,19 +17,26 @@ public class FacturaController {
     @Autowired
     private FacturacionInputPort facturacionService;
 
-    // Generar nueva factura (Acción administrativa o post-pago)
-    @PostMapping("/generar")
-    public String generar(@RequestParam Long idOrden, @RequestParam String rfc) {
-        facturacionService.generarFactura(idOrden, rfc);
-        return "redirect:/taller/ordenes/" + idOrden; // Regresa a la orden
-    }
+    @Autowired
+    private ClienteRepository clienteRepository;
 
-    // VISTA FALTANTE: Ver mis facturas (Para el Cliente)
+    @Autowired
+    private FacturaRepository facturaRepository;
+
+    // ... método generar ...
+
     @GetMapping("/mis-facturas")
     public String misFacturas(Model model, Authentication authentication) {
+        String email = authentication.getName();
 
-        String usuarioActual = authentication.getName();
-
+        // Buscar cliente y sus facturas
+        clienteRepository.findByCorreo(email).ifPresentOrElse(
+                cliente -> {
+                    // Asumiendo que guardamos el RFC o ID Cliente en la factura
+                    model.addAttribute("facturas", facturaRepository.findByRfcCliente(cliente.getIdCliente()));
+                },
+                () -> model.addAttribute("facturas", List.of())
+        );
 
         return "clientes/mis_facturas";
     }

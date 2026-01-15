@@ -43,7 +43,7 @@ public class OrdenController {
         return "redirect:/taller/ordenes";
     }
 
-    // Ver detalle y agregar reparaciones
+
     @GetMapping("/{id}")
     public String detalle(@PathVariable Long id, Model model) {
         model.addAttribute("orden", ordenService.obtenerOrden(id));

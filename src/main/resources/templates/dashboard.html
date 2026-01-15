@@ -60,7 +60,7 @@
                 <div class="action-desc">Ver ingresos mensuales y rendimiento del taller.</div>
             </a>
 
-            <a href="#" class="action-card card-warning">
+            <a th:href="@{/admin/departamentos}" class="action-card card-warning">
                 <i class="fa fa-building action-icon"></i>
                 <div class="action-title">Departamentos</div>
                 <div class="action-desc">Configurar áreas de trabajo (Pintura, Mecánica, etc.)</div>
@@ -86,7 +86,7 @@
                 <div class="action-desc">Ver autos en reparación y actualizar estados.</div>
             </a>
 
-            <a href="#" class="action-card card-danger">
+            <a th:href="@{/inventario}" class="action-card card-danger">
                 <i class="fa fa-boxes action-icon"></i>
                 <div class="action-title">Inventario</div>
                 <div class="action-desc">Consultar stock de refacciones (Próximamente).</div>
@@ -99,19 +99,19 @@
         <h4 class="mb-3"><i class="fa fa-car"></i> Mi Garage</h4>
         <div class="dashboard-grid">
 
-            <a href="#" class="action-card">
+            <a th:href="@{/clientes/mis-vehiculos}" class="action-card">
                 <i class="fa fa-car action-icon"></i>
                 <div class="action-title">Mis Vehículos</div>
                 <div class="action-desc">Ver historial de servicios y estatus actual.</div>
             </a>
 
-            <a href="#" class="action-card card-success">
+            <a th:href="@{/facturas/mis-facturas}" class="action-card card-success">
                 <i class="fa fa-file-invoice-dollar action-icon"></i>
                 <div class="action-title">Mis Facturas</div>
                 <div class="action-desc">Descargar comprobantes fiscales y garantías.</div>
             </a>
 
-            <a href="#" class="action-card card-warning">
+            <a th:href="@{/citas/solicitar}" class="action-card card-warning">
                 <i class="fa fa-calendar-check action-icon"></i>
                 <div class="action-title">Agendar Cita</div>
                 <div class="action-desc">Solicitar mantenimiento preventivo o reparación.</div>

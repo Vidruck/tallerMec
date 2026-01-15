@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 @Component
-public class UsuarioDaoImp implements UsuarioOutputPort {
+public class UsuarioDaoImpl implements UsuarioOutputPort {
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Override

@@ -24,7 +24,7 @@
 
 /* Paleta Catppuccin Mocha (Oscuro) */
 [data-theme="dark"] {
-  --ctp-base: #1e1e2e;
+  --ctp-base: #111116;
   --ctp-mantle: #181825;
   --ctp-crust: #11111b;
   --ctp-text: #cdd6f4;

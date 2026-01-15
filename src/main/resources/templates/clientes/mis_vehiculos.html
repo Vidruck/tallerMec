@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Vehículos | AutoWizards</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar-custom mb-4">
+    <div class="nav-brand">
+        <a th:href="@{/dashboard}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Dashboard</a>
+    </div>
+    <div class="user-info"><span class="badge badge-primary">Mi Garage</span></div>
+</nav>
+
+<div class="container">
+    <h2 class="mb-4">Mis Vehículos Registrados</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4" th:each="v : ${vehiculos}">
+            <div class="card-custom h-100">
+                <div class="d-flex justify-content-between mb-2">
+                    <h4 th:text="${v.marca + ' ' + v.modelo}">Marca Modelo</h4>
+                    <span class="badge badge-secondary" th:text="${v.anio}">2020</span>
+                </div>
+                <div class="mb-3 text-center py-3" style="background:var(--ctp-surface0); border-radius:8px;">
+                    <i class="fa fa-car fa-3x" style="color:var(--ctp-subtext0)"></i>
+                </div>
+                <p><strong>Placas:</strong> <span th:text="${v.placas}">ABC-123</span></p>
+                <p><strong>VIN:</strong> <span th:text="${v.numeroSerie}" style="font-family:monospace; font-size:0.9em;">...</span></p>
+                <a th:href="@{/citas/solicitar}" class="btn btn-outline-primary w-100 mt-2">Agendar Servicio</a>
+            </div>
+        </div>
+
+        <div class="col-12 text-center" th:if="${vehiculos.empty}">
+            <div class="alert alert-warning">
+                No tienes vehículos asociados. Contacta al taller para registrar tu primer auto.
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/app.js}"></script>
+</body>
+</html>
