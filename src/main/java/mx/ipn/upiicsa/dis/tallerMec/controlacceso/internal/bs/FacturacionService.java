@@ -32,8 +32,7 @@ public class FacturacionService implements FacturacionInputPort {
         factura.setFechaEmision(LocalDateTime.now());
         factura.setOrdenServicio(orden);
         factura.setRfcCliente(rfc);
-        // Aquí podrías calcular impuestos. Asumimos monto orden es neto o bruto según regla.
-        factura.setMontoTotal(1500.00); // TODO: Calcular sumando reparaciones de la orden
+        factura.setMontoTotal(1500.00); 
         factura.setArchivoPdf("/facturas/" + factura.getIdFactura() + ".pdf");
 
         return outputPort.save(factura);
