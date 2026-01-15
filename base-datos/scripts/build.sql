@@ -6,7 +6,6 @@ CREATE DATABASE "taller";
 
 \c taller
 BEGIN;
-CREATE EXTENSION postgis;
 \i create.sql
 \i catalogos.sql
 COMMIT;
