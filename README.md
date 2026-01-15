@@ -101,7 +101,7 @@ java -jar target/tallerMec-0.0.1-SNAPSHOT.jar
    
   
 ## 👨‍💻 Autor
-### Desarrollado por Alejandro González Hernández para la materia de Ingeniería de Software. © 2026 Raven
+### Desarrollado por Alejandro González Hernández para la materia de Ingeniería de Diseño. © 2026 Raven
 ## ⚖️ Licencia y Términos de Uso
 
 **Copyright © 2026 Alejandro González Hernández.**
