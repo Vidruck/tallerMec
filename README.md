@@ -102,3 +102,12 @@ java -jar target/tallerMec-0.0.1-SNAPSHOT.jar
   
 ## 👨‍💻 Autor
 ### Desarrollado por Alejandro González Hernández para la materia de Ingeniería de Software. © 2026 Raven
+## ⚖️ Licencia y Términos de Uso
+
+**Copyright © 2026 Alejandro González Hernández.**
+**Todos los derechos reservados.**
+
+Este software ha sido desarrollado exclusivamente con fines **académicos y educativos**.
+
+1. **Permisos:** Se autoriza la visualización, descarga y ejecución del código fuente únicamente para propósitos de evaluación, revisión académica y pruebas de funcionamiento relacionadas con la institución academica UPIICSA.
+2. **Restricciones:** Queda estrictamente **prohibido el uso comercial**, la redistribución, la modificación o la incorporación de este código (total o parcial) en otros proyectos sin la autorización expresa y por escrito del autor.
