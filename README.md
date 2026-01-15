@@ -87,8 +87,8 @@ java -jar target/tallerMec-0.0.1-SNAPSHOT.jar
 
 ## 🔐 Credenciales de Acceso
 #### Una vez levantado, accede desde tu navegador a: http://localhost:8080 (o la IP de tu servidor).
-### Rol,Usuario Administrador:
-### (Email) admin@autowizards.com, Contraseña  admin
+#### Rol,Usuario Administrador:
+#### (Email) admin@autowizards.com, Contraseña  admin
 
 ## 🏗️ Arquitectura
 ### Este proyecto sigue los principios de Arquitectura Hexagonal (Puertos y Adaptadores) para garantizar el desacoplamiento y la mantenibilidad:
