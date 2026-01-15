@@ -1,9 +1,7 @@
 package mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 import java.util.List;
 
 @Entity
@@ -26,10 +24,13 @@ public class Cliente {
     @Column(name = "direccion")
     private String direccion;
 
-    @Column(name = "correo")
+    @Column(name = "correo", unique = true)
     private String correo;
 
-    // CORRECCIÓN AQUÍ: fetch = FetchType.LAZY (antes decía fecth)
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    // NUEVO CAMPO
+    @Column(name = "sexo")
+    private String sexo;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Vehiculo> vehiculos;
 }

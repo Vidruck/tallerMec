@@ -2,18 +2,18 @@
 -- ESTRUCTURA DE TABLAS: TALLER MECÁNICO (PostgreSQL)
 -- ==========================================
 
--- 1. Tabla Clientes
+
 CREATE TABLE IF NOT EXISTS clientes (
-                                        id_cliente VARCHAR(15) NOT NULL, -- RFC o INE
+    id_cliente VARCHAR(15) NOT NULL, -- RFC o INE (Si no tiene, generamos uno interno)
     nombre VARCHAR(100) NOT NULL,
     telefono VARCHAR(15),
     direccion VARCHAR(250),
     correo VARCHAR(150) NOT NULL,
+    sexo VARCHAR(10),
 
     CONSTRAINT pk_clientes PRIMARY KEY (id_cliente),
     CONSTRAINT uq_clientes_correo UNIQUE (correo)
     );
-
 -- 2. Tabla Vehiculos
 CREATE TABLE IF NOT EXISTS vehiculos (
                                          id_vehiculo VARCHAR(15) NOT NULL,

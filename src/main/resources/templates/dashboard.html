@@ -41,10 +41,10 @@
 <div class="dashboard-container">
 
     <div class="mb-5">
-        <h1>Hola, <span sec:authentication="name" style="color: var(--accent-primary);">Usuario</span>.</h1>
+        <h1>Hola, <span style="color: var(--accent-primary);"
+                        th:text="${nombreUsuario != null ? nombreUsuario : #authentication.name}">Usuario</span>.</h1>
         <p style="color: var(--ctp-subtext0); font-size: 1.1rem;">Bienvenido al panel de control de AutoWizards.</p>
     </div>
-
     <div sec:authorize="hasRole('ADMIN')">
         <h4 class="mb-3"><i class="fa fa-shield"></i> Administración</h4>
         <div class="dashboard-grid">
