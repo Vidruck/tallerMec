@@ -87,7 +87,6 @@ public class LoginController {
 
         // Buscamos al usuario para obtener su nombre real
         usuarioRepository.findByEmail(email).ifPresent(usuario -> {
-            // Pasamos solo el primer nombre para que sea más personal ("Hola, Alejandro")
             String primerNombre = usuario.getNombre().split(" ")[0];
             model.addAttribute("nombreUsuario", primerNombre);
         });
