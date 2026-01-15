@@ -1,6 +1,6 @@
 package mx.ipn.upiicsa.dis.tallerMec.controlacceso.internal.bs;
 
-import mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.model.Departamento; // IMPORTANTE
+import mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.model.Departamento;
 import mx.ipn.upiicsa.dis.tallerMec.controlacceso.external.jpa.model.Usuario;
 import mx.ipn.upiicsa.dis.tallerMec.controlacceso.internal.input.UsuarioInputPort;
 import mx.ipn.upiicsa.dis.tallerMec.controlacceso.internal.output.UsuarioOutputPort;
