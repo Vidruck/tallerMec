@@ -18,6 +18,6 @@ public class ReporteController {
     public String verDashboard(Model model) {
         model.addAttribute("ingresos", reporteService.obtenerIngresosMensuales());
         model.addAttribute("rendimiento", reporteService.obtenerRendimientoMecanicos());
-        return "admin/reportes_dashboard"; // Necesitarás crear este HTML con gráficas (Chart.js)
+        return "admin/reportes_dashboard";
     }
 }
