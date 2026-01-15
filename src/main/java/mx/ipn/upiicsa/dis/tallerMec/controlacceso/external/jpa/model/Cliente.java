@@ -27,7 +27,7 @@ public class Cliente {
     @Column(name = "correo", unique = true)
     private String correo;
 
-    // NUEVO CAMPO
+    
     @Column(name = "sexo")
     private String sexo;
 
