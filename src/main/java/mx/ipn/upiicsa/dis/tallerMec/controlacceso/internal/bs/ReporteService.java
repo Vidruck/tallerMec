@@ -11,14 +11,11 @@ import java.util.Map;
 @Service
 public class ReporteService implements ReporteInputPort {
 
-    // Inyectamos Repositorios directamente porque es un servicio de SOLO LECTURA/AGREGACIÓN
-    // Si quisieras ser estricto, crearías un ReporteOutputPort
     @Autowired
     private FacturaRepository facturaRepository;
 
     @Override
     public Map<String, Double> obtenerIngresosMensuales() {
-        // Simulación: En un caso real harías una consulta SQL nativa (GROUP BY MONTH)
         Map<String, Double> datos = new HashMap<>();
         datos.put("ENERO", 15000.0);
         datos.put("FEBRERO", 23500.0);
