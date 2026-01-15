@@ -8,7 +8,6 @@ public interface UsuarioInputPort {
     Usuario registrarUsuario(Usuario usuario);
     Usuario buscarPorEmail(String email);
 
-    // Estos son los que faltaban y causan error en los controladores:
     void cambiarRolUsuario(String idUsuario, String nuevoRol, Departamento departamento);
     void actualizarPerfil(String idUsuario, String nuevoNombre, String nuevoPassword);
     List<Usuario> obtenerTodos(); // Necesario para el AdminController
