@@ -10,7 +10,6 @@ public class InventarioController {
 
     @GetMapping
     public String listar() {
-        // Esto busca el archivo en templates/taller/inventario.html
         return "taller/inventario";
     }
 }
