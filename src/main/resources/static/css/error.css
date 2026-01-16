@@ -1,0 +1,20 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS: PÁGINA DE ERROR
+   Proyecto: Taller Mecánico
+   Descripción: Estilos para centrar y formatear la página de error.
+   ========================================= */
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.error-code {
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--accent-danger);
+    line-height: 1;
+}

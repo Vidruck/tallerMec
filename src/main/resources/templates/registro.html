@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<!--
+  Vista: Registro
+  Descripción: Formulario para el registro de nuevos usuarios (Clientes).
+  Acceso: Público
+-->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Registro | AutoWizards</title>
@@ -7,101 +13,112 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<button id="theme-toggle" class="theme-toggle-fixed"><i class="fa fa-moon-o"></i></button>
+    <button id="theme-toggle" class="theme-toggle-fixed"><i class="fa fa-moon-o"></i></button>
 
-<div class="login-container">
-    <div class="card-custom login-card" style="max-width: 700px;">
+    <div class="login-container">
+        <div class="card-custom login-card" style="max-width: 700px;">
 
-        <div class="text-center mb-4">
-            <h2 style="color: var(--accent-primary);">Únete a AutoWizards</h2>
-            <p style="color: var(--ctp-subtext0);">Completa tu perfil para brindarte un mejor servicio.</p>
+            <div class="text-center mb-4">
+                <h2 style="color: var(--accent-primary);">Únete a AutoWizards</h2>
+                <p style="color: var(--ctp-subtext0);">Completa tu perfil para brindarte un mejor servicio.</p>
+            </div>
+
+            <form th:action="@{/registro}" method="post">
+
+                <h5 class="mb-3"
+                    style="color: var(--accent-primary); border-bottom: 1px solid var(--ctp-surface0); padding-bottom: 0.5rem;">
+                    Datos Personales</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Nombre(s)</label>
+                        <input type="text" name="nombres" class="form-control" placeholder="Ej. Juan" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" name="apellidos" class="form-control" placeholder="Ej. Pérez López" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Teléfono / Celular</label>
+                        <div class="input-group-custom">
+                            <div class="input-icon-box"><i class="fa fa-phone"></i></div>
+                            <input type="tel" name="telefono" class="form-control" placeholder="55 1234 5678" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Sexo</label>
+                        <div class="d-flex gap-3 mt-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" value="Hombre" id="sexoH"
+                                    checked>
+                                <label class="form-check-label" for="sexoH">Hombre</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sexo" value="Mujer" id="sexoM">
+                                <label class="form-check-label" for="sexoM">Mujer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">RFC <span
+                                style="color: var(--ctp-subtext0); font-size: 0.8em;">(Opcional)</span></label>
+                        <input type="text" name="rfc" class="form-control" placeholder="Para facturación">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" name="direccion" class="form-control" placeholder="Calle, Número, Colonia..."
+                            required>
+                    </div>
+                </div>
+
+                <h5 class="mt-4 mb-3"
+                    style="color: var(--accent-primary); border-bottom: 1px solid var(--ctp-surface0); padding-bottom: 0.5rem;">
+                    Datos de Cuenta</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Correo Electrónico</label>
+                        <div class="input-group-custom">
+                            <div class="input-icon-box"><i class="fa fa-envelope"></i></div>
+                            <input type="email" name="email" class="form-control" placeholder="ejemplo@email.com"
+                                required>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <label class="form-label">Contraseña</label>
+                        <div class="input-group-custom">
+                            <div class="input-icon-box"><i class="fa fa-lock"></i></div>
+                            <div class="password-wrapper">
+                                <input type="password" name="password" class="form-control" placeholder="••••••••"
+                                    required>
+                                <i class="fa fa-eye password-toggle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-3">
+                    <i class="fa fa-check-circle"></i> Registrarse
+                </button>
+
+                <div class="text-center">
+                    <span style="color: var(--ctp-subtext0);">¿Ya tienes cuenta? </span>
+                    <a th:href="@{/login}">Inicia Sesión</a>
+                </div>
+            </form>
         </div>
-
-        <form th:action="@{/registro}" method="post">
-
-            <h5 class="mb-3" style="color: var(--accent-primary); border-bottom: 1px solid var(--ctp-surface0); padding-bottom: 0.5rem;">Datos Personales</h5>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Nombre(s)</label>
-                    <input type="text" name="nombres" class="form-control" placeholder="Ej. Juan" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Apellidos</label>
-                    <input type="text" name="apellidos" class="form-control" placeholder="Ej. Pérez López" required>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Teléfono / Celular</label>
-                    <div class="input-group-custom">
-                        <div class="input-icon-box"><i class="fa fa-phone"></i></div>
-                        <input type="tel" name="telefono" class="form-control" placeholder="55 1234 5678" required>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Sexo</label>
-                    <div class="d-flex gap-3 mt-2">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sexo" value="Hombre" id="sexoH" checked>
-                            <label class="form-check-label" for="sexoH">Hombre</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="sexo" value="Mujer" id="sexoM">
-                            <label class="form-check-label" for="sexoM">Mujer</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">RFC <span style="color: var(--ctp-subtext0); font-size: 0.8em;">(Opcional)</span></label>
-                    <input type="text" name="rfc" class="form-control" placeholder="Para facturación">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Dirección</label>
-                    <input type="text" name="direccion" class="form-control" placeholder="Calle, Número, Colonia..." required>
-                </div>
-            </div>
-
-            <h5 class="mt-4 mb-3" style="color: var(--accent-primary); border-bottom: 1px solid var(--ctp-surface0); padding-bottom: 0.5rem;">Datos de Cuenta</h5>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Correo Electrónico</label>
-                    <div class="input-group-custom">
-                        <div class="input-icon-box"><i class="fa fa-envelope"></i></div>
-                        <input type="email" name="email" class="form-control" placeholder="ejemplo@email.com" required>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <label class="form-label">Contraseña</label>
-                    <div class="input-group-custom">
-                        <div class="input-icon-box"><i class="fa fa-lock"></i></div>
-                        <div class="password-wrapper">
-                            <input type="password" name="password" class="form-control" placeholder="••••••••" required>
-                            <i class="fa fa-eye password-toggle"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100 mb-3">
-                <i class="fa fa-check-circle"></i> Registrarse
-            </button>
-
-            <div class="text-center">
-                <span style="color: var(--ctp-subtext0);">¿Ya tienes cuenta? </span>
-                <a th:href="@{/login}">Inicia Sesión</a>
-            </div>
-        </form>
     </div>
-</div>
 
-<script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
+
 </html>

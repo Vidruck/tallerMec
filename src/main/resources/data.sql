@@ -1,5 +1,7 @@
 -- ==========================================
 -- CARGA INICIAL DE DATOS (CATÁLOGOS)
+-- Proyecto: Taller Mecánico
+-- Descripción: Inserta datos iniciales para catálogos como Departamentos.
 -- ==========================================
 
 -- Insertar Departamentos Base (Si no existen)

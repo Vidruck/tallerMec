@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<!--
+  Vista: Detalle de Orden
+  Descripción: Visualización completa de una orden, reparaciones, costos y acciones de estado.
+  Roles: TRABAJADOR, JEFE_AREA, ADMIN
+-->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>Detalle de Orden | AutoWizards</title>
@@ -7,113 +13,119 @@
   <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<nav class="navbar-custom mb-4">
-  <div class="nav-brand">
-    <a th:href="@{/taller/ordenes}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Tablero</a>
-  </div>
-  <div class="user-info">
-            <span class="badge"
-                  th:classappend="${orden.estado == 'FINALIZADO' ? 'badge-success' : 'badge-warning'}"
-                  th:text="${orden.estado}">ESTADO</span>
-  </div>
-</nav>
+  <nav class="navbar-custom mb-4">
+    <div class="nav-brand">
+      <a th:href="@{/taller/ordenes}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Tablero</a>
+    </div>
+    <div class="user-info">
+      <span class="badge" th:classappend="${orden.estado == 'FINALIZADO' ? 'badge-success' : 'badge-warning'}"
+        th:text="${orden.estado}">ESTADO</span>
+    </div>
+  </nav>
 
-<div class="container">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card-custom h-100">
-        <h5 class="mb-3" style="color: var(--accent-primary);">Datos del Servicio</h5>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card-custom h-100">
+          <h5 class="mb-3" style="color: var(--accent-primary);">Datos del Servicio</h5>
 
-        <div class="mb-3">
-          <small style="color: var(--ctp-subtext0);">Vehículo</small>
-          <div style="font-weight: 600;" th:text="${orden.vehiculo.marca + ' ' + orden.vehiculo.modelo}">Auto</div>
-          <div style="font-family: monospace;" th:text="${orden.vehiculo.placas}">Placas</div>
-        </div>
+          <div class="mb-3">
+            <small style="color: var(--ctp-subtext0);">Vehículo</small>
+            <div style="font-weight: 600;" th:text="${orden.vehiculo.marca + ' ' + orden.vehiculo.modelo}">Auto</div>
+            <div style="font-family: monospace;" th:text="${orden.vehiculo.placas}">Placas</div>
+          </div>
 
-        <div class="mb-3">
-          <small style="color: var(--ctp-subtext0);">Cliente</small>
-          <div th:text="${orden.vehiculo.cliente.nombre}">Nombre Cliente</div>
-        </div>
+          <div class="mb-3">
+            <small style="color: var(--ctp-subtext0);">Cliente</small>
+            <div th:text="${orden.vehiculo.cliente.nombre}">Nombre Cliente</div>
+          </div>
 
-        <div class="mb-3">
-          <small style="color: var(--ctp-subtext0);">Ingreso</small>
-          <div th:text="${#temporals.format(orden.fechaIngreso, 'dd/MM/yyyy HH:mm')}">Fecha</div>
-        </div>
+          <div class="mb-3">
+            <small style="color: var(--ctp-subtext0);">Ingreso</small>
+            <div th:text="${#temporals.format(orden.fechaIngreso, 'dd/MM/yyyy HH:mm')}">Fecha</div>
+          </div>
 
-        <hr style="border-color: var(--ctp-surface0);">
+          <hr style="border-color: var(--ctp-surface0);">
 
-        <small style="color: var(--ctp-subtext0);">Reporte Inicial:</small>
-        <p style="font-style: italic; font-size: 0.9rem;" th:text="${orden.descripcionProblema}">...</p>
+          <small style="color: var(--ctp-subtext0);">Reporte Inicial:</small>
+          <p style="font-style: italic; font-size: 0.9rem;" th:text="${orden.descripcionProblema}">...</p>
 
-        <form th:if="${orden.estado != 'FINALIZADO'}"
-              th:action="@{'/taller/ordenes/' + ${orden.idOrden} + '/finalizar'}" method="post" class="mt-4">
-          <button type="submit" class="btn btn-primary w-100" style="background-color: var(--accent-success);">
-            <i class="fa fa-check-double"></i> Finalizar Orden
-          </button>
-        </form>
-
-        <div th:if="${orden.estado == 'FINALIZADO'}" class="mt-4">
-          <form th:action="@{/facturas/generar}" method="post">
-            <input type="hidden" name="idOrden" th:value="${orden.idOrden}"/>
-            <input type="hidden" name="rfc" th:value="${orden.vehiculo.cliente.idCliente}"/> <button type="submit" class="btn btn-primary w-100">
-            <i class="fa fa-file-invoice-dollar"></i> Generar Factura
-          </button>
+          <form th:if="${orden.estado != 'FINALIZADO'}"
+            th:action="@{'/taller/ordenes/' + ${orden.idOrden} + '/finalizar'}" method="post" class="mt-4">
+            <button type="submit" class="btn btn-primary w-100" style="background-color: var(--accent-success);">
+              <i class="fa fa-check-double"></i> Finalizar Orden
+            </button>
           </form>
+
+          <div th:if="${orden.estado == 'FINALIZADO'}" class="mt-4">
+            <form th:action="@{/facturas/generar}" method="post">
+              <input type="hidden" name="idOrden" th:value="${orden.idOrden}" />
+              <input type="hidden" name="rfc" th:value="${orden.vehiculo.cliente.idCliente}" /> <button type="submit"
+                class="btn btn-primary w-100">
+                <i class="fa fa-file-invoice-dollar"></i> Generar Factura
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-8">
-      <div class="card-custom">
-        <h5 class="mb-4">Reparaciones y Costos</h5>
+      <div class="col-md-8">
+        <div class="card-custom">
+          <h5 class="mb-4">Reparaciones y Costos</h5>
 
-        <ul class="repair-list" th:if="${!orden.reparaciones.empty}">
-          <li class="repair-item" th:each="rep : ${orden.reparaciones}">
-            <div>
-              <div style="font-weight: 600;" th:text="${rep.descripcion}">Cambio de Aceite</div>
-              <small style="color: var(--ctp-subtext0);" th:text="${#temporals.format(rep.fechaReparacion, 'dd/MM/yyyy')}">Fecha</small>
-            </div>
-            <div class="repair-cost" th:text="'$' + ${rep.costo}">$0.00</div>
-          </li>
-        </ul>
-
-        <div th:if="${orden.reparaciones.empty}" class="text-center p-4" style="color: var(--ctp-subtext0);">
-          No se han registrado reparaciones aún.
-        </div>
-
-        <div th:if="${orden.estado != 'FINALIZADO'}" class="mt-4 pt-4" style="border-top: 1px dashed var(--ctp-surface0);">
-          <h6 class="mb-3">Agregar Reparación / Refacción</h6>
-
-          <form th:action="@{'/taller/ordenes/' + ${orden.idOrden} + '/reparaciones'}"
-                th:object="${nuevaReparacion}" method="post">
-
-            <div class="row">
-              <div class="col-md-8 mb-3">
-                <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Descripción del trabajo..." required>
+          <ul class="repair-list" th:if="${!orden.reparaciones.empty}">
+            <li class="repair-item" th:each="rep : ${orden.reparaciones}">
+              <div>
+                <div style="font-weight: 600;" th:text="${rep.descripcion}">Cambio de Aceite</div>
+                <small style="color: var(--ctp-subtext0);"
+                  th:text="${#temporals.format(rep.fechaReparacion, 'dd/MM/yyyy')}">Fecha</small>
               </div>
-              <div class="col-md-4 mb-3">
-                <div class="input-group-custom">
-                  <div class="input-icon-box">$</div>
-                  <input type="number" step="0.01" th:field="*{costo}" class="form-control" placeholder="Costo" required>
+              <div class="repair-cost" th:text="'$' + ${rep.costo}">$0.00</div>
+            </li>
+          </ul>
+
+          <div th:if="${orden.reparaciones.empty}" class="text-center p-4" style="color: var(--ctp-subtext0);">
+            No se han registrado reparaciones aún.
+          </div>
+
+          <div th:if="${orden.estado != 'FINALIZADO'}" class="mt-4 pt-4"
+            style="border-top: 1px dashed var(--ctp-surface0);">
+            <h6 class="mb-3">Agregar Reparación / Refacción</h6>
+
+            <form th:action="@{'/taller/ordenes/' + ${orden.idOrden} + '/reparaciones'}" th:object="${nuevaReparacion}"
+              method="post">
+
+              <div class="row">
+                <div class="col-md-8 mb-3">
+                  <input type="text" th:field="*{descripcion}" class="form-control"
+                    placeholder="Descripción del trabajo..." required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="input-group-custom">
+                    <div class="input-icon-box">$</div>
+                    <input type="number" step="0.01" th:field="*{costo}" class="form-control" placeholder="Costo"
+                      required>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="text-end">
-              <button type="submit" class="btn btn-primary" style="width: auto;">
-                <i class="fa fa-plus"></i> Agregar
-              </button>
-            </div>
-          </form>
-        </div>
+              <div class="text-end">
+                <button type="submit" class="btn btn-primary" style="width: auto;">
+                  <i class="fa fa-plus"></i> Agregar
+                </button>
+              </div>
+            </form>
+          </div>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<script th:src="@{/js/app.js}"></script>
+  <script th:src="@{/js/app.js}"></script>
 </body>
+
 </html>

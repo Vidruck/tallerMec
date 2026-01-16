@@ -1,6 +1,10 @@
 /**
  * AutoWizards - App Principal
- * Manejo de temas y utilidades de interfaz
+ * 
+ * Este archivo gestiona la lógica global de la interfaz de usuario, incluyendo:
+ * - Cambio de tema (Claro/Oscuro).
+ * - Visibilidad de contraseñas.
+ * - Buscadores en tiempo real para tablas.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initPasswordToggle();
 });
 
-/* --- 1. Cambio de Tema (Claro/Oscuro) --- */
+/**
+ * 1. Inicializa el sistema de cambio de tema.
+ * Detecta preferencias del sistema o almacenamiento local.
+ */
 function initThemeToggle() {
     const toggleBtn = document.getElementById('theme-toggle');
     const html = document.documentElement;
@@ -44,7 +51,7 @@ function initPasswordToggle() {
     const toggles = document.querySelectorAll('.password-toggle');
 
     toggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
+        toggle.addEventListener('click', function () {
             // El input es el hermano anterior dentro del .password-wrapper
             const input = this.previousElementSibling;
 
@@ -66,7 +73,7 @@ function initPasswordToggle() {
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('tableSearch');
     if (searchInput) {
-        searchInput.addEventListener('keyup', function() {
+        searchInput.addEventListener('keyup', function () {
             const filter = this.value.toLowerCase();
             const rows = document.querySelectorAll('.table-custom tbody tr');
 

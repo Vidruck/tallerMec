@@ -1,5 +1,7 @@
 -- ==========================================
 -- ESTRUCTURA DE TABLAS: TALLER MECÁNICO (PostgreSQL)
+-- Proyecto: Taller Mecánico
+-- Descripción: Script DDL para la creación de tablas, índices y restricciones.
 -- ==========================================
 
 

@@ -30,31 +30,31 @@ public class OrdenDaoImpl implements OrdenOutputPort {
 
     @Override
     public OrdenServicio saveOrden(OrdenServicio orden) {
-        return ordenRepo.save(orden);
+        return java.util.Objects.requireNonNull(ordenRepo.save(orden));
     }
 
     @Override
     public Reparacion saveReparacion(Reparacion reparacion) {
-        return reparacionRepo.save(reparacion);
+        return java.util.Objects.requireNonNull(reparacionRepo.save(reparacion));
     }
 
     @Override
     public Optional<OrdenServicio> findOrdenById(Long id) {
-        return ordenRepo.findById(id);
+        return java.util.Objects.requireNonNull(ordenRepo.findById(id));
     }
 
     @Override
     public List<OrdenServicio> findOrdenesByEstado(String estado) {
-        return ordenRepo.findByEstado(estado);
+        return java.util.Objects.requireNonNull(ordenRepo.findByEstado(estado));
     }
 
     @Override
     public Optional<Vehiculo> findVehiculoById(String id) {
-        return vehiculoRepo.findById(id);
+        return java.util.Objects.requireNonNull(vehiculoRepo.findById(id));
     }
 
     @Override
     public Optional<Usuario> findUsuarioById(String id) {
-        return usuarioRepo.findById(id);
+        return java.util.Objects.requireNonNull(usuarioRepo.findById(id));
     }
 }

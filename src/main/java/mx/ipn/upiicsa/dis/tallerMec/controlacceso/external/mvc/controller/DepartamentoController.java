@@ -29,7 +29,7 @@ public class DepartamentoController {
 
     @PostMapping("/guardar")
     public String guardar(Departamento departamento) {
-        departamentoRepository.save(departamento);
+        departamentoRepository.save(java.util.Objects.requireNonNull(departamento));
         return "redirect:/admin/departamentos?exito";
     }
 }

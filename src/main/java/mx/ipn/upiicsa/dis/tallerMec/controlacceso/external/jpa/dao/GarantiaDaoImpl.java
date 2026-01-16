@@ -29,21 +29,21 @@ public class GarantiaDaoImpl implements GarantiaOutputPort {
 
     @Override
     public Garantia save(Garantia garantia) {
-        return garantiaRepository.save(garantia);
+        return java.util.Objects.requireNonNull(garantiaRepository.save(garantia));
     }
 
     @Override
     public Optional<Garantia> findById(String id) {
-        return garantiaRepository.findById(id);
+        return java.util.Objects.requireNonNull(garantiaRepository.findById(id));
     }
 
     @Override
     public List<Garantia> findByEstado(String estado) {
-        return garantiaRepository.findByEstado(estado);
+        return java.util.Objects.requireNonNull(garantiaRepository.findByEstado(estado));
     }
 
     @Override
     public Optional<Reparacion> findReparacionById(Long idReparacion) {
-        return reparacionRepository.findById(idReparacion);
+        return java.util.Objects.requireNonNull(reparacionRepository.findById(idReparacion));
     }
 }

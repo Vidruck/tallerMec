@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<!--
+  Vista: Nuevo Vehículo
+  Descripción: Formulario para registrar un vehículo y asignarlo a un cliente.
+  Roles: TRABAJADOR, ADMIN
+-->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Vehículo | AutoWizards</title>
@@ -7,69 +13,75 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="card-custom" style="width: 100%; max-width: 700px;">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card-custom" style="width: 100%; max-width: 700px;">
 
-        <div class="mb-4">
-            <h3><i class="fa fa-car" style="color: var(--accent-primary);"></i> Registrar Vehículo</h3>
-            <p style="color: var(--ctp-subtext0);">
-                Asignando unidad al cliente:
-                <strong style="color: var(--accent-success);" th:text="${clienteId}">ID_CLIENTE</strong>
-            </p>
+            <div class="mb-4">
+                <h3><i class="fa fa-car" style="color: var(--accent-primary);"></i> Registrar Vehículo</h3>
+                <p style="color: var(--ctp-subtext0);">
+                    Asignando unidad al cliente:
+                    <strong style="color: var(--accent-success);" th:text="${clienteId}">ID_CLIENTE</strong>
+                </p>
+            </div>
+
+            <form th:action="@{'/clientes/' + ${clienteId} + '/vehiculos/guardar'}" th:object="${vehiculo}"
+                method="post">
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Placas (ID)</label>
+                        <input type="text" th:field="*{idVehiculo}" class="form-control" placeholder="ABC-99-99"
+                            required>
+                        <small style="color: var(--ctp-subtext0);">Se usará como Identificador Único</small>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Número de Serie (VIN)</label>
+                        <input type="text" th:field="*{numeroSerie}" class="form-control" placeholder="17 Caracteres"
+                            required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Marca</label>
+                        <input type="text" th:field="*{marca}" class="form-control" placeholder="Toyota" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Modelo</label>
+                        <input type="text" th:field="*{modelo}" class="form-control" placeholder="Corolla" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Año</label>
+                        <input type="number" th:field="*{anio}" class="form-control" placeholder="2020" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Color</label>
+                        <input type="text" th:field="*{color}" class="form-control" placeholder="Rojo Metálico">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Placas (Visual)</label>
+                        <input type="text" th:field="*{placas}" class="form-control" placeholder="ABC-99-99" required>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                    <a th:href="@{/clientes}" class="btn btn-primary"
+                        style="background-color: var(--ctp-surface0); color: var(--ctp-text); border:none;">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar Vehículo</button>
+                </div>
+            </form>
         </div>
-
-        <form th:action="@{'/clientes/' + ${clienteId} + '/vehiculos/guardar'}" th:object="${vehiculo}" method="post">
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Placas (ID)</label>
-                    <input type="text" th:field="*{idVehiculo}" class="form-control" placeholder="ABC-99-99" required>
-                    <small style="color: var(--ctp-subtext0);">Se usará como Identificador Único</small>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Número de Serie (VIN)</label>
-                    <input type="text" th:field="*{numeroSerie}" class="form-control" placeholder="17 Caracteres" required>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <label class="form-label">Marca</label>
-                    <input type="text" th:field="*{marca}" class="form-control" placeholder="Toyota" required>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label class="form-label">Modelo</label>
-                    <input type="text" th:field="*{modelo}" class="form-control" placeholder="Corolla" required>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label class="form-label">Año</label>
-                    <input type="number" th:field="*{anio}" class="form-control" placeholder="2020" required>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Color</label>
-                    <input type="text" th:field="*{color}" class="form-control" placeholder="Rojo Metálico">
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Placas (Visual)</label>
-                    <input type="text" th:field="*{placas}" class="form-control" placeholder="ABC-99-99" required>
-                </div>
-            </div>
-
-            <div class="d-flex gap-2 mt-3">
-                <a th:href="@{/clientes}" class="btn btn-primary" style="background-color: var(--ctp-surface0); color: var(--ctp-text); border:none;">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Guardar Vehículo</button>
-            </div>
-        </form>
     </div>
-</div>
 
-<script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
+
 </html>

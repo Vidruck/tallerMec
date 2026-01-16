@@ -26,21 +26,21 @@ public class ClienteDaoImpl implements ClienteOutputPort {
 
     @Override
     public Cliente saveCliente(Cliente cliente) {
-        return clienteRepo.save(cliente);
+        return java.util.Objects.requireNonNull(clienteRepo.save(cliente));
     }
 
     @Override
     public List<Cliente> findAllClientes() {
-        return clienteRepo.findAll();
+        return java.util.Objects.requireNonNull(clienteRepo.findAll());
     }
 
     @Override
     public Optional<Cliente> findClienteById(String id) {
-        return clienteRepo.findById(id);
+        return java.util.Objects.requireNonNull(clienteRepo.findById(id));
     }
 
     @Override
     public Vehiculo saveVehiculo(Vehiculo vehiculo) {
-        return vehiculoRepo.save(vehiculo);
+        return java.util.Objects.requireNonNull(vehiculoRepo.save(vehiculo));
     }
 }

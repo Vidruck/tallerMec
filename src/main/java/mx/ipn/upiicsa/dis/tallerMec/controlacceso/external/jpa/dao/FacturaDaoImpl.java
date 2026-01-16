@@ -29,22 +29,21 @@ public class FacturaDaoImpl implements FacturacionOutputPort {
 
     @Override
     public Factura save(Factura factura) {
-        return facturaRepository.save(factura);
+        return java.util.Objects.requireNonNull(facturaRepository.save(factura));
     }
 
     @Override
     public List<Factura> findByRfc(String rfc) {
-
-        return facturaRepository.findByRfcCliente(rfc);
+        return java.util.Objects.requireNonNull(facturaRepository.findByRfcCliente(rfc));
     }
 
     @Override
     public Optional<Factura> findById(String id) {
-        return facturaRepository.findById(id);
+        return java.util.Objects.requireNonNull(facturaRepository.findById(id));
     }
 
     @Override
     public Optional<OrdenServicio> findOrdenById(Long idOrden) {
-        return ordenServicioRepository.findById(idOrden);
+        return java.util.Objects.requireNonNull(ordenServicioRepository.findById(idOrden));
     }
 }

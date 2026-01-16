@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<!--
+  Vista: Nuevo Cliente
+  Descripción: Formulario para registrar un nuevo cliente en el sistema.
+  Roles: TRABAJADOR, ADMIN
+-->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Nuevo Cliente | AutoWizards</title>
@@ -7,54 +13,60 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-    <div class="card-custom" style="width: 100%; max-width: 600px;">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="card-custom" style="width: 100%; max-width: 600px;">
 
-        <div class="mb-4 text-center">
-            <h3><i class="fa fa-user-plus" style="color: var(--accent-primary);"></i> Registrar Cliente</h3>
-            <p style="color: var(--ctp-subtext0);">Ingresa los datos personales del propietario.</p>
+            <div class="mb-4 text-center">
+                <h3><i class="fa fa-user-plus" style="color: var(--accent-primary);"></i> Registrar Cliente</h3>
+                <p style="color: var(--ctp-subtext0);">Ingresa los datos personales del propietario.</p>
+            </div>
+
+            <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">ID Cliente (INE/RFC)</label>
+                        <input type="text" th:field="*{idCliente}" class="form-control" placeholder="ABC123456"
+                            required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" th:field="*{nombre}" class="form-control" placeholder="Juan Pérez" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" th:field="*{correo}" class="form-control" placeholder="cliente@email.com"
+                            required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" th:field="*{telefono}" class="form-control" placeholder="55 1234 5678">
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Dirección</label>
+                    <textarea th:field="*{direccion}" class="form-control" rows="2"
+                        placeholder="Calle, Número, Colonia..."></textarea>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a th:href="@{/clientes}" class="btn btn-primary"
+                        style="background-color: var(--ctp-surface0); color: var(--ctp-text); border:none;">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+                </div>
+            </form>
         </div>
-
-        <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">ID Cliente (INE/RFC)</label>
-                    <input type="text" th:field="*{idCliente}" class="form-control" placeholder="ABC123456" required>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Nombre Completo</label>
-                    <input type="text" th:field="*{nombre}" class="form-control" placeholder="Juan Pérez" required>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Correo Electrónico</label>
-                    <input type="email" th:field="*{correo}" class="form-control" placeholder="cliente@email.com" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Teléfono</label>
-                    <input type="text" th:field="*{telefono}" class="form-control" placeholder="55 1234 5678">
-                </div>
-            </div>
-
-            <div class="mb-4">
-                <label class="form-label">Dirección</label>
-                <textarea th:field="*{direccion}" class="form-control" rows="2" placeholder="Calle, Número, Colonia..."></textarea>
-            </div>
-
-            <div class="d-flex gap-2">
-                <a th:href="@{/clientes}" class="btn btn-primary" style="background-color: var(--ctp-surface0); color: var(--ctp-text); border:none;">Cancelar</a>
-                <button type="submit" class="btn btn-primary">Guardar Cliente</button>
-            </div>
-        </form>
     </div>
-</div>
 
-<script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
+
 </html>

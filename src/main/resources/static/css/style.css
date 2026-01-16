@@ -1,5 +1,7 @@
 /* =========================================
-   1. SISTEMA DE DISEÑO & VARIABLES
+   HOJA DE ESTILOS PRINCIPAL
+   Proyecto: Taller Mecánico
+   Descripción: Variables globales, tokens de diseño y componentes base.
    ========================================= */
 :root {
   /* Paleta Catppuccin Latte (Claro) */
@@ -14,7 +16,7 @@
   --accent-primary: #3daee9;
   --accent-success: #40a02b;
   --accent-warning: #df8e1d;
-  --accent-danger:  #d20f39;
+  --accent-danger: #d20f39;
 
   /* Variables de Componentes */
   --border-radius: 12px;
@@ -34,7 +36,7 @@
   --accent-primary: #3daee9;
   --accent-success: #a6e3a1;
   --accent-warning: #f9e2af;
-  --accent-danger:  #f38ba8;
+  --accent-danger: #f38ba8;
 }
 
 /* =========================================
@@ -49,7 +51,11 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   color: var(--ctp-text);
   font-weight: 700;
 }
@@ -93,7 +99,8 @@ a:hover {
   border-radius: var(--border-radius);
   padding: 0.75rem 1rem;
   width: 100%;
-  box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+  box-sizing: border-box;
+  /* Importante para que el padding no rompa el ancho */
   transition: all 0.2s ease;
 }
 
@@ -128,8 +135,16 @@ a:hover {
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
-.alert-danger { background-color: var(--accent-danger); color: #fff; }
-.alert-success { background-color: var(--accent-success); color: #fff; }
+
+.alert-danger {
+  background-color: var(--accent-danger);
+  color: #fff;
+}
+
+.alert-success {
+  background-color: var(--accent-success);
+  color: #fff;
+}
 
 /* =========================================
    4. ESTILOS ESPECÍFICOS: LOGIN
@@ -144,7 +159,8 @@ a:hover {
 
 .login-card {
   width: 100%;
-  max-width: 420px; /* Un poco más ancho para elegancia */
+  max-width: 420px;
+  /* Un poco más ancho para elegancia */
 }
 
 /* Wrapper para el input y el icono del input group */
@@ -183,6 +199,7 @@ a:hover {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
+
 .theme-toggle-fixed:hover {
   transform: rotate(15deg) scale(1.1);
 }
@@ -190,7 +207,8 @@ a:hover {
 /* Toggle de Contraseña (Ojito) */
 .password-wrapper {
   position: relative;
-  display: flex; /* Para alinear con el input group */
+  display: flex;
+  /* Para alinear con el input group */
   width: 100%;
 }
 
@@ -204,9 +222,11 @@ a:hover {
   z-index: 5;
   transition: color 0.2s;
 }
+
 .password-toggle:hover {
   color: var(--accent-primary);
 }
+
 /* =========================================
    5. DASHBOARD & NAVBAR
    ========================================= */
@@ -242,8 +262,15 @@ a:hover {
   line-height: 1.2;
 }
 
-.user-name { font-weight: 600; font-size: 0.95rem; }
-.user-role { font-size: 0.8rem; color: var(--ctp-subtext0); }
+.user-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.user-role {
+  font-size: 0.8rem;
+  color: var(--ctp-subtext0);
+}
 
 /* Grid del Dashboard */
 .dashboard-container {
@@ -273,7 +300,8 @@ a:hover {
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  text-decoration: none; /* Quitar subrayado de enlaces */
+  text-decoration: none;
+  /* Quitar subrayado de enlaces */
 }
 
 .action-card:hover {
@@ -302,14 +330,29 @@ a:hover {
 }
 
 /* Variantes de Color para Tarjetas */
-.card-success .action-icon { color: var(--accent-success); }
-.card-success:hover { border-color: var(--accent-success); }
+.card-success .action-icon {
+  color: var(--accent-success);
+}
 
-.card-warning .action-icon { color: var(--accent-warning); }
-.card-warning:hover { border-color: var(--accent-warning); }
+.card-success:hover {
+  border-color: var(--accent-success);
+}
 
-.card-danger .action-icon { color: var(--accent-danger); }
-.card-danger:hover { border-color: var(--accent-danger); }
+.card-warning .action-icon {
+  color: var(--accent-warning);
+}
+
+.card-warning:hover {
+  border-color: var(--accent-warning);
+}
+
+.card-danger .action-icon {
+  color: var(--accent-danger);
+}
+
+.card-danger:hover {
+  border-color: var(--accent-danger);
+}
 
 /* Botón Logout Sutil */
 .btn-logout {
@@ -320,7 +363,11 @@ a:hover {
   cursor: pointer;
   transition: color 0.2s;
 }
-.btn-logout:hover { color: var(--accent-danger); }
+
+.btn-logout:hover {
+  color: var(--accent-danger);
+}
+
 /* =========================================
    6. TABLAS Y LISTAS (MODULO CLIENTES)
    ========================================= */
@@ -343,7 +390,8 @@ a:hover {
 
 .search-input {
   width: 100%;
-  padding-left: 2.5rem; /* Espacio para el icono */
+  padding-left: 2.5rem;
+  /* Espacio para el icono */
   background-color: var(--ctp-mantle);
   border: 1px solid var(--ctp-surface0);
   color: var(--ctp-text);
@@ -403,8 +451,16 @@ a:hover {
   font-weight: 600;
   display: inline-block;
 }
-.badge-primary { background-color: rgba(61, 174, 233, 0.15); color: var(--accent-primary); }
-.badge-success { background-color: rgba(64, 160, 43, 0.15); color: var(--accent-success); }
+
+.badge-primary {
+  background-color: rgba(61, 174, 233, 0.15);
+  color: var(--accent-primary);
+}
+
+.badge-success {
+  background-color: rgba(64, 160, 43, 0.15);
+  color: var(--accent-success);
+}
 
 /* Botones de Acción en Tabla */
 .btn-icon {
@@ -419,10 +475,12 @@ a:hover {
   background-color: var(--ctp-base);
   color: var(--ctp-text);
 }
+
 .btn-icon:hover {
   background-color: var(--accent-primary);
   color: white;
 }
+
 /* =========================================
    7. MÓDULO DE TALLER (KANBAN / ORDENES)
    ========================================= */
@@ -441,7 +499,8 @@ a:hover {
   padding: 1.5rem;
   position: relative;
   transition: transform 0.2s, box-shadow 0.2s;
-  border-left: 5px solid var(--accent-primary); /* Indicador visual */
+  border-left: 5px solid var(--accent-primary);
+  /* Indicador visual */
 }
 
 .order-card:hover {
@@ -500,14 +559,23 @@ a:hover {
   border-radius: 50%;
   margin-right: 5px;
 }
-.status-taller { background-color: var(--accent-warning); box-shadow: 0 0 5px var(--accent-warning); }
-.status-finalizado { background-color: var(--accent-success); box-shadow: 0 0 5px var(--accent-success); }
+
+.status-taller {
+  background-color: var(--accent-warning);
+  box-shadow: 0 0 5px var(--accent-warning);
+}
+
+.status-finalizado {
+  background-color: var(--accent-success);
+  box-shadow: 0 0 5px var(--accent-success);
+}
 
 /* Detalle de Orden (Timeline de Reparaciones) */
 .repair-list {
   list-style: none;
   padding: 0;
 }
+
 .repair-item {
   background-color: var(--ctp-crust);
   border: 1px solid var(--ctp-surface0);
@@ -518,6 +586,7 @@ a:hover {
   justify-content: space-between;
   align-items: center;
 }
+
 .repair-cost {
   font-weight: 700;
   color: var(--accent-success);

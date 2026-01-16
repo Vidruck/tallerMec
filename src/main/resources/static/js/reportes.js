@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initCharts();
 });
 
+/**
+ * Inicializa los gráficos del Dashboard utilizando Chart.js.
+ * Extrae los datos incrustados en el DOM (data-attributes) para generar:
+ * 1. Gráfico de barras (Ingresos Mensuales).
+ * 2. Gráfico de dona (Rendimiento de Mecánicos).
+ */
 function initCharts() {
     // 1. Extraer datos del DOM (Ingresos)
     const ingresosLabels = [];
@@ -23,7 +29,7 @@ function initCharts() {
     const colorPrimary = '#3daee9';
     const colorSuccess = '#40a02b';
     const colorWarning = '#df8e1d';
-    const colorDanger  = '#d20f39';
+    const colorDanger = '#d20f39';
 
     // 3. Renderizar Gráfico de Barras (Ingresos)
     const ctxIngresos = document.getElementById('chartIngresos');

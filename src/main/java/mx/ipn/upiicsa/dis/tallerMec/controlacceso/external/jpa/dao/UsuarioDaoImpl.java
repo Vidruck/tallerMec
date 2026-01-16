@@ -22,21 +22,21 @@ public class UsuarioDaoImpl implements UsuarioOutputPort {
 
     @Override
     public Usuario guardar(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+        return java.util.Objects.requireNonNull(usuarioRepository.save(usuario));
     }
 
     @Override
     public Optional<Usuario> buscarPorEmail(String email) {
-        return usuarioRepository.findByEmail(email);
+        return java.util.Objects.requireNonNull(usuarioRepository.findByEmail(email));
     }
 
     @Override
     public Optional<Usuario> buscarPorId(String id) {
-        return usuarioRepository.findById(id);
+        return java.util.Objects.requireNonNull(usuarioRepository.findById(id));
     }
 
     @Override
     public List<Usuario> buscarTodos() {
-        return usuarioRepository.findAll();
+        return java.util.Objects.requireNonNull(usuarioRepository.findAll());
     }
 }

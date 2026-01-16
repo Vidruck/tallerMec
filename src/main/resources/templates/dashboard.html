@@ -1,126 +1,135 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!--
+  Vista: Dashboard Principal
+  Descripción: Panel de control centralizado. Muestra opciones según el rol del usuario (Admin, Mecánico, Cliente).
+  Roles: ADMIN, JEFE_AREA, TRABAJADOR, CLIENTE
+-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | AutoWizards</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"> <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-<nav class="navbar-custom">
-    <div class="nav-brand">
-        <i class="fa fa-wrench"></i> AutoWizards
-    </div>
-
-    <div class="nav-user-menu">
-        <button id="theme-toggle" style="background:none; border:none; color:var(--ctp-text); cursor:pointer; font-size:1.2rem;">
-            <i class="fa fa-moon-o"></i>
-        </button>
-
-        <div class="user-info">
-            <div class="user-name" sec:authentication="name">Usuario</div>
-            <div class="user-role" sec:authentication="principal.authorities">Rol</div>
+    <nav class="navbar-custom">
+        <div class="nav-brand">
+            <i class="fa fa-wrench"></i> AutoWizards
         </div>
 
-        <a th:href="@{/perfil}" title="Mi Perfil" style="color: var(--ctp-text);">
-            <i class="fa fa-user-circle fa-lg"></i>
-        </a>
-
-        <form th:action="@{/logout}" method="post" style="display:inline;">
-            <button type="submit" class="btn-logout" title="Cerrar Sesión">
-                <i class="fa fa-sign-out"></i>
+        <div class="nav-user-menu">
+            <button id="theme-toggle"
+                style="background:none; border:none; color:var(--ctp-text); cursor:pointer; font-size:1.2rem;">
+                <i class="fa fa-moon-o"></i>
             </button>
-        </form>
-    </div>
-</nav>
 
-<div class="dashboard-container">
+            <div class="user-info">
+                <div class="user-name" sec:authentication="name">Usuario</div>
+                <div class="user-role" sec:authentication="principal.authorities">Rol</div>
+            </div>
 
-    <div class="mb-5">
-        <h1>Hola, <span style="color: var(--accent-primary);"
-                        th:text="${nombreUsuario != null ? nombreUsuario : #authentication.name}">Usuario</span>.</h1>
-        <p style="color: var(--ctp-subtext0); font-size: 1.1rem;">Bienvenido al panel de control de AutoWizards.</p>
-    </div>
-    <div sec:authorize="hasRole('ADMIN')">
-        <h4 class="mb-3"><i class="fa fa-shield"></i> Administración</h4>
-        <div class="dashboard-grid">
-            <a th:href="@{/admin/usuarios}" class="action-card">
-                <i class="fa fa-users action-icon"></i>
-                <div class="action-title">Usuarios y Roles</div>
-                <div class="action-desc">Gestionar personal, asignar departamentos y permisos.</div>
+            <a th:href="@{/perfil}" title="Mi Perfil" style="color: var(--ctp-text);">
+                <i class="fa fa-user-circle fa-lg"></i>
             </a>
 
-            <a th:href="@{/admin/reportes/dashboard}" class="action-card card-success">
-                <i class="fa fa-chart-line action-icon"></i>
-                <div class="action-title">Reportes Financieros</div>
-                <div class="action-desc">Ver ingresos mensuales y rendimiento del taller.</div>
-            </a>
-
-            <a th:href="@{/admin/departamentos}" class="action-card card-warning">
-                <i class="fa fa-building action-icon"></i>
-                <div class="action-title">Departamentos</div>
-                <div class="action-desc">Configurar áreas de trabajo (Pintura, Mecánica, etc.)</div>
-            </a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn-logout" title="Cerrar Sesión">
+                    <i class="fa fa-sign-out"></i>
+                </button>
+            </form>
         </div>
-        <hr class="my-5" style="border-color: var(--ctp-surface0);">
-    </div>
+    </nav>
 
+    <div class="dashboard-container">
 
-    <div sec:authorize="hasAnyRole('ADMIN', 'JEFE_AREA', 'TRABAJADOR')">
-        <h4 class="mb-3"><i class="fa fa-cogs"></i> Operaciones de Taller</h4>
-        <div class="dashboard-grid">
-
-            <a th:href="@{/clientes}" class="action-card">
-                <i class="fa fa-plus-circle action-icon"></i>
-                <div class="action-title">Recepción de Vehículo</div>
-                <div class="action-desc">Registrar cliente nuevo o abrir orden de servicio.</div>
-            </a>
-
-            <a th:href="@{/taller/ordenes}" class="action-card card-warning">
-                <i class="fa fa-clipboard-list action-icon"></i>
-                <div class="action-title">Tablero de Trabajo</div>
-                <div class="action-desc">Ver autos en reparación y actualizar estados.</div>
-            </a>
-
-            <a th:href="@{/inventario}" class="action-card card-danger">
-                <i class="fa fa-boxes action-icon"></i>
-                <div class="action-title">Inventario</div>
-                <div class="action-desc">Consultar stock de refacciones (Próximamente).</div>
-            </a>
+        <div class="mb-5">
+            <h1>Hola, <span style="color: var(--accent-primary);"
+                    th:text="${nombreUsuario != null ? nombreUsuario : #authentication.name}">Usuario</span>.</h1>
+            <p style="color: var(--ctp-subtext0); font-size: 1.1rem;">Bienvenido al panel de control de AutoWizards.</p>
         </div>
-    </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <h4 class="mb-3"><i class="fa fa-shield"></i> Administración</h4>
+            <div class="dashboard-grid">
+                <a th:href="@{/admin/usuarios}" class="action-card">
+                    <i class="fa fa-users action-icon"></i>
+                    <div class="action-title">Usuarios y Roles</div>
+                    <div class="action-desc">Gestionar personal, asignar departamentos y permisos.</div>
+                </a>
 
+                <a th:href="@{/admin/reportes/dashboard}" class="action-card card-success">
+                    <i class="fa fa-chart-line action-icon"></i>
+                    <div class="action-title">Reportes Financieros</div>
+                    <div class="action-desc">Ver ingresos mensuales y rendimiento del taller.</div>
+                </a>
 
-    <div sec:authorize="hasRole('CLIENTE')">
-        <h4 class="mb-3"><i class="fa fa-car"></i> Mi Garage</h4>
-        <div class="dashboard-grid">
-
-            <a th:href="@{/clientes/mis-vehiculos}" class="action-card">
-                <i class="fa fa-car action-icon"></i>
-                <div class="action-title">Mis Vehículos</div>
-                <div class="action-desc">Ver historial de servicios y estatus actual.</div>
-            </a>
-
-            <a th:href="@{/facturas/mis-facturas}" class="action-card card-success">
-                <i class="fa fa-file-invoice-dollar action-icon"></i>
-                <div class="action-title">Mis Facturas</div>
-                <div class="action-desc">Descargar comprobantes fiscales y garantías.</div>
-            </a>
-
-            <a th:href="@{/citas/solicitar}" class="action-card card-warning">
-                <i class="fa fa-calendar-check action-icon"></i>
-                <div class="action-title">Agendar Cita</div>
-                <div class="action-desc">Solicitar mantenimiento preventivo o reparación.</div>
-            </a>
+                <a th:href="@{/admin/departamentos}" class="action-card card-warning">
+                    <i class="fa fa-building action-icon"></i>
+                    <div class="action-title">Departamentos</div>
+                    <div class="action-desc">Configurar áreas de trabajo (Pintura, Mecánica, etc.)</div>
+                </a>
+            </div>
+            <hr class="my-5" style="border-color: var(--ctp-surface0);">
         </div>
+
+
+        <div sec:authorize="hasAnyRole('ADMIN', 'JEFE_AREA', 'TRABAJADOR')">
+            <h4 class="mb-3"><i class="fa fa-cogs"></i> Operaciones de Taller</h4>
+            <div class="dashboard-grid">
+
+                <a th:href="@{/clientes}" class="action-card">
+                    <i class="fa fa-plus-circle action-icon"></i>
+                    <div class="action-title">Recepción de Vehículo</div>
+                    <div class="action-desc">Registrar cliente nuevo o abrir orden de servicio.</div>
+                </a>
+
+                <a th:href="@{/taller/ordenes}" class="action-card card-warning">
+                    <i class="fa fa-clipboard-list action-icon"></i>
+                    <div class="action-title">Tablero de Trabajo</div>
+                    <div class="action-desc">Ver autos en reparación y actualizar estados.</div>
+                </a>
+
+                <a th:href="@{/inventario}" class="action-card card-danger">
+                    <i class="fa fa-boxes action-icon"></i>
+                    <div class="action-title">Inventario</div>
+                    <div class="action-desc">Consultar stock de refacciones (Próximamente).</div>
+                </a>
+            </div>
+        </div>
+
+
+        <div sec:authorize="hasRole('CLIENTE')">
+            <h4 class="mb-3"><i class="fa fa-car"></i> Mi Garage</h4>
+            <div class="dashboard-grid">
+
+                <a th:href="@{/clientes/mis-vehiculos}" class="action-card">
+                    <i class="fa fa-car action-icon"></i>
+                    <div class="action-title">Mis Vehículos</div>
+                    <div class="action-desc">Ver historial de servicios y estatus actual.</div>
+                </a>
+
+                <a th:href="@{/facturas/mis-facturas}" class="action-card card-success">
+                    <i class="fa fa-file-invoice-dollar action-icon"></i>
+                    <div class="action-title">Mis Facturas</div>
+                    <div class="action-desc">Descargar comprobantes fiscales y garantías.</div>
+                </a>
+
+                <a th:href="@{/citas/solicitar}" class="action-card card-warning">
+                    <i class="fa fa-calendar-check action-icon"></i>
+                    <div class="action-title">Agendar Cita</div>
+                    <div class="action-desc">Solicitar mantenimiento preventivo o reparación.</div>
+                </a>
+            </div>
+        </div>
+
     </div>
 
-</div>
-
-<script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
+
 </html>

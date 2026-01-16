@@ -1,5 +1,11 @@
 <!DOCTYPE html>
+<!--
+  Vista: Mis Facturas
+  Descripción: Listado de facturas generadas para el cliente logueado.
+  Roles: CLIENTE
+-->
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Mis Facturas | AutoWizards</title>
@@ -7,80 +13,87 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-<nav class="navbar-custom mb-4">
-    <div class="nav-brand">
-        <a th:href="@{/dashboard}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Dashboard</a>
-    </div>
-    <div class="user-info">
-        <button id="theme-toggle" style="background:none; border:none; color:var(--ctp-text); cursor:pointer; font-size:1.2rem; margin-right:10px;">
-            <i class="fa fa-moon-o"></i>
-        </button>
-        <span class="badge badge-success">Zona Fiscal</span>
-    </div>
-</nav>
-
-<div class="container">
-
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Mis Comprobantes Fiscales</h2>
-        <a th:href="@{/facturas/mis-facturas}" class="btn btn-sm btn-outline-secondary" title="Actualizar lista">
-            <i class="fa fa-sync"></i>
-        </a>
-    </div>
-
-    <div class="card-custom" th:if="${not #lists.isEmpty(facturas)}">
-        <div class="table-responsive">
-            <table class="table-custom">
-                <thead>
-                <tr>
-                    <th>Folio Fiscal (UUID)</th>
-                    <th>Fecha Emisión</th>
-                    <th>Orden de Servicio</th>
-                    <th>Monto</th>
-                    <th>Descarga</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="factura : ${facturas}">
-                    <td style="font-family: monospace; color: var(--accent-primary);" th:text="${factura.idFactura}">UUID</td>
-                    <td th:text="${#temporals.format(factura.fechaEmision, 'dd/MM/yyyy')}">Fecha</td>
-                    <td>
-                        <span th:text="'Orden #' + ${factura.orden.idOrden}">Orden</span>
-                        <small class="d-block text-muted" th:text="${factura.orden.vehiculo.modelo}">Auto</small>
-                    </td>
-                    <td style="font-weight: bold; color: var(--accent-success);"
-                        th:text="'$ ' + ${factura.montoTotal}">$0.00</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px;">
-                            <i class="fa fa-file-pdf"></i> PDF
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+    <nav class="navbar-custom mb-4">
+        <div class="nav-brand">
+            <a th:href="@{/dashboard}" style="color: inherit;"><i class="fa fa-arrow-left"></i> Dashboard</a>
         </div>
-    </div>
+        <div class="user-info">
+            <button id="theme-toggle"
+                style="background:none; border:none; color:var(--ctp-text); cursor:pointer; font-size:1.2rem; margin-right:10px;">
+                <i class="fa fa-moon-o"></i>
+            </button>
+            <span class="badge badge-success">Zona Fiscal</span>
+        </div>
+    </nav>
 
-    <div th:if="${#lists.isEmpty(facturas)}" class="text-center py-5">
-        <div style="background: var(--ctp-mantle); padding: 3rem; border-radius: 16px; border: 1px dashed var(--ctp-surface1); max-width: 600px; margin: 0 auto;">
-            <div style="background: var(--ctp-surface0); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
-                <i class="fa fa-folder-open fa-3x" style="color: var(--ctp-subtext0);"></i>
-            </div>
-            <h3 style="color: var(--ctp-text); font-weight: 700;">Sin Comprobantes</h3>
-            <p style="color: var(--ctp-subtext0); margin-bottom: 2rem;">
-                Aún no se han generado facturas para tus servicios. <br>
-                Cuando tu auto esté listo y pagado, aparecerán aquí automáticamente.
-            </p>
-            <a th:href="@{/dashboard}" class="btn btn-outline-primary px-4">
-                <i class="fa fa-arrow-left"></i> Volver al Dashboard
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Mis Comprobantes Fiscales</h2>
+            <a th:href="@{/facturas/mis-facturas}" class="btn btn-sm btn-outline-secondary" title="Actualizar lista">
+                <i class="fa fa-sync"></i>
             </a>
         </div>
+
+        <div class="card-custom" th:if="${not #lists.isEmpty(facturas)}">
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>Folio Fiscal (UUID)</th>
+                            <th>Fecha Emisión</th>
+                            <th>Orden de Servicio</th>
+                            <th>Monto</th>
+                            <th>Descarga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="factura : ${facturas}">
+                            <td style="font-family: monospace; color: var(--accent-primary);"
+                                th:text="${factura.idFactura}">UUID</td>
+                            <td th:text="${#temporals.format(factura.fechaEmision, 'dd/MM/yyyy')}">Fecha</td>
+                            <td>
+                                <span th:text="'Orden #' + ${factura.orden.idOrden}">Orden</span>
+                                <small class="d-block text-muted"
+                                    th:text="${factura.orden.vehiculo.modelo}">Auto</small>
+                            </td>
+                            <td style="font-weight: bold; color: var(--accent-success);"
+                                th:text="'$ ' + ${factura.montoTotal}">$0.00</td>
+                            <td>
+                                <a href="#" class="btn btn-primary btn-sm" style="border-radius: 20px;">
+                                    <i class="fa fa-file-pdf"></i> PDF
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div th:if="${#lists.isEmpty(facturas)}" class="text-center py-5">
+            <div
+                style="background: var(--ctp-mantle); padding: 3rem; border-radius: 16px; border: 1px dashed var(--ctp-surface1); max-width: 600px; margin: 0 auto;">
+                <div
+                    style="background: var(--ctp-surface0); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i class="fa fa-folder-open fa-3x" style="color: var(--ctp-subtext0);"></i>
+                </div>
+                <h3 style="color: var(--ctp-text); font-weight: 700;">Sin Comprobantes</h3>
+                <p style="color: var(--ctp-subtext0); margin-bottom: 2rem;">
+                    Aún no se han generado facturas para tus servicios. <br>
+                    Cuando tu auto esté listo y pagado, aparecerán aquí automáticamente.
+                </p>
+                <a th:href="@{/dashboard}" class="btn btn-outline-primary px-4">
+                    <i class="fa fa-arrow-left"></i> Volver al Dashboard
+                </a>
+            </div>
+        </div>
+
     </div>
 
-</div>
-
-<script th:src="@{/js/app.js}"></script>
+    <script th:src="@{/js/app.js}"></script>
 </body>
+
 </html>
