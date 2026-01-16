@@ -10,6 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controlador para la gestión de órdenes de servicio.
+ * <p>
+ * Permite al personal del taller gestionar el ciclo de vida de las órdenes de
+ * servicio,
+ * incluyendo reparaciones y estados.
+ * </p>
+ */
 @Controller
 @RequestMapping("/taller/ordenes")
 public class OrdenController {
@@ -35,14 +43,12 @@ public class OrdenController {
     // Guardar la orden
     @PostMapping("/guardar")
     public String guardarOrden(OrdenServicio orden,
-                               @RequestParam String idVehiculo,
-                               @AuthenticationPrincipal User user) {
+            @RequestParam String idVehiculo,
+            @AuthenticationPrincipal User user) {
 
-
-        ordenService.crearOrden(idVehiculo, "admin", orden.getDescripcionProblema()); // "admin" temporal
+        ordenService.crearOrden(idVehiculo, "admin", orden.getDescripcionProblema()); // Password:"admin" (temporal)
         return "redirect:/taller/ordenes";
     }
-
 
     @GetMapping("/{id}")
     public String detalle(@PathVariable Long id, Model model) {

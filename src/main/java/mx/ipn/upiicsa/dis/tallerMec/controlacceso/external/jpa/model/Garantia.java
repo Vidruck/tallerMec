@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 
+/**
+ * Entidad que representa la garantía otorgada por una reparación.
+ * <p>
+ * Define la vigencia y la cobertura de la garantía asociada a un trabajo
+ * realizado.
+ * </p>
+ */
 @Entity
 @Table(name = "garantias")
 @Data

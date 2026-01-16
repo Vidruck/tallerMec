@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 
+/**
+ * Entidad que representa una reparación realizada dentro de una orden de
+ * servicio.
+ * <p>
+ * Detalla el trabajo efectuado, su costo y la fecha de realización.
+ * </p>
+ */
 @Entity
 @Table(name = "reparaciones")
 @Data

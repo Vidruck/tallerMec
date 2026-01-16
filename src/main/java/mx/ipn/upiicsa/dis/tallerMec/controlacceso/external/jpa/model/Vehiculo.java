@@ -5,6 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+/**
+ * Entidad que representa un vehículo.
+ * <p>
+ * Almacena las características del vehículo y su relación con el propietario
+ * (cliente).
+ * </p>
+ */
 @Entity
 @Table(name = "vehiculos")
 @Data
@@ -13,7 +20,7 @@ import lombok.AllArgsConstructor;
 public class Vehiculo {
 
     @Id
-    @Column(name = "id_vehiculo") 
+    @Column(name = "id_vehiculo")
     private String idVehiculo;
 
     @Column(name = "marca")

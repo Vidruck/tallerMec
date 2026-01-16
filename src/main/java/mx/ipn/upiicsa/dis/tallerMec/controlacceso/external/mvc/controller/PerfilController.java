@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Controlador para la gestión del perfil de usuario.
+ * <p>
+ * Permite a los usuarios ver y actualizar su información personal.
+ * </p>
+ */
 @Controller
 @RequestMapping("/perfil")
 public class PerfilController {
@@ -29,8 +35,8 @@ public class PerfilController {
 
     @PostMapping("/actualizar")
     public String actualizarPerfil(@RequestParam String idUsuario,
-                                   @RequestParam String nombre,
-                                   @RequestParam(required = false) String password) {
+            @RequestParam String nombre,
+            @RequestParam(required = false) String password) {
 
         usuarioService.actualizarPerfil(idUsuario, nombre, password);
         return "redirect:/perfil?actualizado";

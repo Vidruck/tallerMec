@@ -11,6 +11,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Implementación de la lógica de negocio para la facturación.
+ * <p>
+ * Gestiona la generación y consulta de facturas, asegurando que solo se
+ * facturen órdenes finalizadas.
+ * </p>
+ */
 @Service
 public class FacturacionService implements FacturacionInputPort {
 
@@ -32,7 +39,7 @@ public class FacturacionService implements FacturacionInputPort {
         factura.setFechaEmision(LocalDateTime.now());
         factura.setOrdenServicio(orden);
         factura.setRfcCliente(rfc);
-        factura.setMontoTotal(1500.00); 
+        factura.setMontoTotal(1500.00);
         factura.setArchivoPdf("/facturas/" + factura.getIdFactura() + ".pdf");
 
         return outputPort.save(factura);

@@ -11,6 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Implementación de la lógica de negocio para usuarios.
+ * <p>
+ * Gestiona el registro, autenticación y modificación de perfiles de usuario.
+ * </p>
+ */
 @Service
 public class UsuarioService implements UsuarioInputPort {
 
@@ -46,11 +52,12 @@ public class UsuarioService implements UsuarioInputPort {
         Usuario u = usuarioOutputPort.buscarPorId(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado ID: " + idUsuario));
 
-        if("CLIENTE".equals(nuevoRol)) {
+        if ("CLIENTE".equals(nuevoRol)) {
             u.setDepartamento(null);
         } else {
             // Validamos que si es personal, traiga departamento
-            if(departamento == null) throw new RuntimeException("Personal requiere departamento");
+            if (departamento == null)
+                throw new RuntimeException("Personal requiere departamento");
             u.setDepartamento(departamento);
         }
 
@@ -64,7 +71,7 @@ public class UsuarioService implements UsuarioInputPort {
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
         u.setNombre(nuevoNombre);
-        if(nuevoPassword != null && !nuevoPassword.isBlank()) {
+        if (nuevoPassword != null && !nuevoPassword.isBlank()) {
             u.setPassword(passwordEncoder.encode(nuevoPassword));
         }
         usuarioOutputPort.guardar(u);

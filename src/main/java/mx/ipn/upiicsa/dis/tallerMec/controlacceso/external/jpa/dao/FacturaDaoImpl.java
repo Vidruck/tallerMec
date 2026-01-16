@@ -11,6 +11,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación del puerto de salida para la facturación.
+ * <p>
+ * Se encarga de la persistencia de facturas y la recuperación de órdenes de
+ * servicio relacionadas.
+ * </p>
+ */
 @Component
 public class FacturaDaoImpl implements FacturacionOutputPort {
 
@@ -27,7 +34,7 @@ public class FacturaDaoImpl implements FacturacionOutputPort {
 
     @Override
     public List<Factura> findByRfc(String rfc) {
-        
+
         return facturaRepository.findByRfcCliente(rfc);
     }
 

@@ -15,6 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.UUID;
 
+/**
+ * Controlador para el acceso y registro de usuarios.
+ * <p>
+ * Maneja el inicio de sesión, registro de nuevos usuarios y el dashboard
+ * principal.
+ * </p>
+ */
 @Controller
 public class LoginController {
 
@@ -28,13 +35,19 @@ public class LoginController {
     private ClienteRepository clienteRepository;
 
     @GetMapping("/")
-    public String index() { return "index"; }
+    public String index() {
+        return "index";
+    }
 
     @GetMapping("/login")
-    public String login() { return "login"; }
+    public String login() {
+        return "login";
+    }
 
     @GetMapping("/registro")
-    public String mostrarRegistro() { return "registro"; }
+    public String mostrarRegistro() {
+        return "registro";
+    }
 
     // --- PROCESAMIENTO MEJORADO DEL REGISTRO ---
     @PostMapping("/registro")

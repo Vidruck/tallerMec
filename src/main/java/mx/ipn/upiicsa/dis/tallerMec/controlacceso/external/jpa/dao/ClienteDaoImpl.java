@@ -10,13 +10,37 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación del puerto de salida para la gestión de clientes.
+ * <p>
+ * Utiliza {@link ClienteRepository} y {@link VehiculoRepository} para persistir
+ * y recuperar datos.
+ * </p>
+ */
 @Component
 public class ClienteDaoImpl implements ClienteOutputPort {
-    @Autowired private ClienteRepository clienteRepo;
-    @Autowired private VehiculoRepository vehiculoRepo;
+    @Autowired
+    private ClienteRepository clienteRepo;
+    @Autowired
+    private VehiculoRepository vehiculoRepo;
 
-    @Override public Cliente saveCliente(Cliente cliente) { return clienteRepo.save(cliente); }
-    @Override public List<Cliente> findAllClientes() { return clienteRepo.findAll(); }
-    @Override public Optional<Cliente> findClienteById(String id) { return clienteRepo.findById(id); }
-    @Override public Vehiculo saveVehiculo(Vehiculo vehiculo) { return vehiculoRepo.save(vehiculo); }
+    @Override
+    public Cliente saveCliente(Cliente cliente) {
+        return clienteRepo.save(cliente);
+    }
+
+    @Override
+    public List<Cliente> findAllClientes() {
+        return clienteRepo.findAll();
+    }
+
+    @Override
+    public Optional<Cliente> findClienteById(String id) {
+        return clienteRepo.findById(id);
+    }
+
+    @Override
+    public Vehiculo saveVehiculo(Vehiculo vehiculo) {
+        return vehiculoRepo.save(vehiculo);
+    }
 }

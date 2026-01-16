@@ -4,6 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
 
+/**
+ * Entidad que representa a un cliente del taller.
+ * <p>
+ * Almacena información personal y de contacto del cliente, así como su relación
+ * con los vehículos registrados.
+ * </p>
+ */
 @Entity
 @Table(name = "clientes")
 @Data
@@ -27,7 +34,6 @@ public class Cliente {
     @Column(name = "correo", unique = true)
     private String correo;
 
-    
     @Column(name = "sexo")
     private String sexo;
 

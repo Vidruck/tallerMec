@@ -7,6 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Controlador para la generación y visualización de reportes.
+ * <p>
+ * Provee vistas para métricas de desempeño y financieros del taller.
+ * </p>
+ */
 @Controller
 @RequestMapping("/admin/reportes")
 public class ReporteController {

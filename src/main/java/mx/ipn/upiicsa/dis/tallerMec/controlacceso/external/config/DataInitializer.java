@@ -10,6 +10,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.UUID;
 
+/**
+ * Configuración inicial de datos para la aplicación.
+ * <p>
+ * Esta clase se encarga de precargar datos necesarios en la base de datos al
+ * inicio de la ejecución.
+ * </p>
+ */
 @Configuration
 public class DataInitializer {
 
@@ -19,6 +26,12 @@ public class DataInitializer {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Bean que se ejecuta al inicio de la aplicación para crear un usuario
+     * administrador si no existe.
+     *
+     * @return CommandLineRunner que ejecuta la lógica de inicialización.
+     */
     @Bean
     public CommandLineRunner initAdmin() {
         return args -> {
@@ -28,12 +41,8 @@ public class DataInitializer {
                 admin.setIdUsuario(UUID.randomUUID().toString().substring(0, 8));
                 admin.setNombre("Administrador Sistema");
                 admin.setEmail("admin@autowizards.com");
-                admin.setPassword(passwordEncoder.encode("admin")); // Password inicial
+                admin.setPassword(passwordEncoder.encode("admin"));
                 admin.setRol("ADMIN");
-
-                // El Admin pertenece al depto ADMINISTRACION (ID 1 en tu SQL anterior)
-                // Nota: Asegúrate de que el Depto 1 exista en la BD o manéjalo aquí
-
                 usuarioRepository.save(admin);
                 System.out.println(">>> USUARIO ADMIN CREADO: admin@autowizards.com / admin");
             }

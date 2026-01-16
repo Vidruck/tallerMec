@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/**
+ * Controlador para la gestión de citas.
+ * <p>
+ * Permite a los clientes solicitar citas de servicio.
+ * </p>
+ */
 @Controller
 @RequestMapping("/citas")
 public class CitaController {
@@ -40,8 +46,8 @@ public class CitaController {
 
     @PostMapping("/guardar")
     public String guardarCita(@RequestParam String idVehiculo,
-                              @RequestParam String problema,
-                              Authentication authentication) {
+            @RequestParam String problema,
+            Authentication authentication) {
         // 2. Creamos la orden con estado "EN_ESPERA" o "CITA_WEB"
         // Usamos un ID de asesor genérico o "admin" ya que es autoservicio
         OrdenServicio orden = ordenService.crearOrden(idVehiculo, "admin", "CITA WEB: " + problema);

@@ -7,6 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controlador para la gestión de departamentos.
+ * <p>
+ * Permite listar y registrar departamentos en el sistema.
+ * </p>
+ */
 @Controller
 @RequestMapping("/admin/departamentos")
 public class DepartamentoController {
@@ -18,7 +24,7 @@ public class DepartamentoController {
     public String listar(Model model) {
         model.addAttribute("departamentos", departamentoRepository.findAll());
         model.addAttribute("nuevoDepto", new Departamento()); // Para el formulario modal
-        return "admin/departamentos"; 
+        return "admin/departamentos";
     }
 
     @PostMapping("/guardar")

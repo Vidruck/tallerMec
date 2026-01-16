@@ -11,6 +11,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Implementación de la lógica de negocio para garantías.
+ * <p>
+ * Controla la emisión y validación de garantías para reparaciones.
+ * </p>
+ */
 @Service
 public class GarantiaService implements GarantiaInputPort {
 

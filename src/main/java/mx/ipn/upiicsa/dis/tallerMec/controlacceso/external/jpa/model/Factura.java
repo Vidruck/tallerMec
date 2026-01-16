@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
+/**
+ * Entidad que representa una factura generada por un servicio.
+ * <p>
+ * Contiene información fiscal y financiera relacionada con una orden de
+ * servicio.
+ * </p>
+ */
 @Entity
 @Table(name = "facturas")
 @Data

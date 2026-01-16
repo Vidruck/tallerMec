@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
 
+/**
+ * Entidad que representa una orden de servicio.
+ * <p>
+ * Contiene los detalles del servicio solicitado, el vehículo involucrado,
+ * el asesor responsable y el estado actual del servicio.
+ * </p>
+ */
 @Entity
 @Table(name = "ordenes_servicio")
 @Data

@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Servicio para la generación de reportes.
+ * <p>
+ * Provee datos estadísticos y financieros simulados para el dashboard.
+ * </p>
+ */
 @Service
 public class ReporteService implements ReporteInputPort {
 

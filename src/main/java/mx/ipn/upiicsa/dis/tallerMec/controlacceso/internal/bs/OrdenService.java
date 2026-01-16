@@ -14,6 +14,14 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Implementación de la lógica de negocio para órdenes de servicio.
+ * <p>
+ * Administra el ciclo de vida de una orden, desde su creación hasta su
+ * finalización,
+ * incluyendo la gestión de reparaciones.
+ * </p>
+ */
 @Service
 public class OrdenService implements OrdenInputPort {
 
@@ -44,7 +52,6 @@ public class OrdenService implements OrdenInputPort {
     public OrdenServicio agregarReparacion(Long idOrden, Reparacion reparacion) {
         OrdenServicio orden = obtenerOrden(idOrden);
 
-
         reparacion.setOrdenServicio(orden);
         reparacion.setFechaReparacion(LocalDate.now());
 
@@ -57,7 +64,7 @@ public class OrdenService implements OrdenInputPort {
         OrdenServicio orden = obtenerOrden(idOrden);
         orden.setEstado(nuevoEstado);
 
-        if("FINALIZADO".equals(nuevoEstado)){
+        if ("FINALIZADO".equals(nuevoEstado)) {
             orden.setFechaSalida(LocalDateTime.now());
         }
 

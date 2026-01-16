@@ -12,6 +12,12 @@ import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
+/**
+ * Controlador para la gestión de clientes y sus vehículos.
+ * <p>
+ * Maneja el registro de clientes y la asociación de vehículos a los mismos.
+ * </p>
+ */
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -51,14 +57,14 @@ public class ClienteController {
         clienteService.agregarVehiculo(id, vehiculo);
         return "redirect:/clientes";
     }
+
     @GetMapping("/mis-vehiculos")
     public String misVehiculos(Model model, Authentication authentication) {
         String email = authentication.getName();
         // Buscamos al cliente por su correo
         clienteRepository.findByCorreo(email).ifPresentOrElse(
                 cliente -> model.addAttribute("vehiculos", cliente.getVehiculos()),
-                () -> model.addAttribute("vehiculos", List.of())
-        );
+                () -> model.addAttribute("vehiculos", List.of()));
         return "clientes/mis_vehiculos";
     }
 }

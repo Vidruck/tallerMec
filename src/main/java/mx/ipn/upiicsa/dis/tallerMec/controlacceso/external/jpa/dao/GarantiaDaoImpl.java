@@ -11,6 +11,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementación del puerto de salida para la gestión de garantías.
+ * <p>
+ * Maneja la persistencia de garantías y valida la existencia de reparaciones
+ * asociadas.
+ * </p>
+ */
 @Component
 public class GarantiaDaoImpl implements GarantiaOutputPort {
 
